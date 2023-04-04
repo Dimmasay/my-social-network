@@ -1,0 +1,28 @@
+.item{
+  max-width: 100%;
+display: flex;
+  margin-bottom: 20px;
+  column-gap: 40px;
+}
+.avatar {
+  flex: 0 0 50px;
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 5px;
+
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.text{
+  padding: 10px;
+flex: 1 1 auto;
+  background-color: #9da8a5;
+}

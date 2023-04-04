@@ -1,0 +1,42 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.container {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.pagesList {
+    justify-content: stretch;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    flex: 0 0 50px;
+    background-color: #9661ad;
+    font-size: 24px;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.pageNumber {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease 0s;
+}
+
+.pageNumber:hover {
+    background-color: #91d5bf;
+
+}
+
+
+.pageNumberSelected {
+    background-color: #519a83;
+}

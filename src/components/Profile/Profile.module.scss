@@ -1,0 +1,28 @@
+.preloader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+}
+
+.container {
+
+}
+
+.row{
+  display: flex;
+  column-gap: 10px;
+}
+
+.columnLeft{
+  flex: 1 1 60%;
+}
+
+.columnRight{
+  flex: 1 1 40%;
+
+}
+
+.content{
+  max-width: 100%;
+}

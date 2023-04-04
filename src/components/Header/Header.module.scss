@@ -1,0 +1,36 @@
+.header {
+  flex: 0 0 70px;
+  background-color: #519a83;
+  display: flex;
+
+  align-items: center;
+
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.item {
+
+}
+
+.link {
+  &:hover{
+    color: #41c20e;
+  }
+  color: inherit;
+  &.active {
+    text-decoration: underline;
+  }
+
+}

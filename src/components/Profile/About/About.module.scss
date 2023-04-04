@@ -1,0 +1,50 @@
+.container {
+  padding: 10px;
+  background-color: cadetblue;
+
+}
+
+.aboutItem {
+  margin-bottom: 10px;
+}
+
+.aboutTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.text {
+  max-width: 100%;
+}
+
+.jobItem {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.titleContacts {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.itemContact {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  margin-bottom: 10px;
+}
+
+.nameContact {
+
+}
+
+.link {
+color: inherit;
+}

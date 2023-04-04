@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  column-gap: 20px;
+}
+.dialogsColumn{
+  flex: 0 1 40%;
+  padding: 20px;
+  background-color: #91d5bf;
+}
+.messagesColumn{
+  flex: 0 1 60%;
+  padding: 20px;
+  background-color: lightgoldenrodyellow;
+}
