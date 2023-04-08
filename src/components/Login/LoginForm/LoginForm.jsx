@@ -56,7 +56,7 @@ const MessageForm = (props) => {
                             </Form>}
 
                         <div>
-                            <button className={style.buttonOut} onClick={logOut}>Log Out</button>
+                            <button className={style.buttonOut} onClick={logOut} >Log Out</button>
                         </div>
                     </div>
                 )

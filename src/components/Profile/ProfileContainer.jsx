@@ -5,7 +5,7 @@ import Posts from "./Posts/Posts";
 import About from "./About/About";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {connect} from "react-redux";
-import {addPostAC, getProfileTC, getStatusTC} from "../../redux/profileReducer";
+import {addPostAC, getProfileTC, getStatusTC, updateAvatarTC, updateStatusTC} from "../../redux/profileReducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {useEffect} from "react";
@@ -14,17 +14,16 @@ import Preloader from "../common/Preloader/Preloader";
 
 
 const Profile = (props) => {
-    let idCurrentProfile
-    props.match.userId
-        ? idCurrentProfile = parseInt(props.match.userId)
-        : idCurrentProfile = props.myId
+    let idCurrentProfile = parseInt(props.match.userId)
+
+    let isOwner = (parseInt(props.match.userId) === props.myId)
 
     useEffect(() => {
         props.getProfileTC(idCurrentProfile)
         props.getStatusTC(idCurrentProfile)
     }, [idCurrentProfile])
 
-    if(!props.profile){
+    if (!props.profile) {
         return (
             <div className={style.preloader}>
                 <Preloader/>
@@ -36,9 +35,13 @@ const Profile = (props) => {
                 <div className={style.row}>
                     <div className={style.columnLeft}>
                         <ProfileInfo
+                            myId={props.myId}
                             fullName={props.profile.fullName}
                             photo={props.profile.photos.small}
                             status={props.status}
+                            updateStatusTC={props.updateStatusTC}
+                            isOwner={isOwner}
+                            updateAvatarTC={props.updateAvatarTC}
                         />
                         <Posts addPostAC={props.addPostAC} posts={props.posts}/>
                     </div>
@@ -64,9 +67,9 @@ const mapStateToProps = (state) => {
 
 const ProfileContainer = compose(
     connect(mapStateToProps, {
-        addPostAC, getProfileTC, getStatusTC
+        addPostAC, getProfileTC, getStatusTC, updateStatusTC, updateAvatarTC
     }),
     withRouter,
-    // withAuthRedirect
+    withAuthRedirect
 )(Profile)
 export default ProfileContainer

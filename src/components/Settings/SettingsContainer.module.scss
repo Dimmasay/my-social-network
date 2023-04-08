@@ -1,0 +1,30 @@
+.row{
+  font-size: 18px;
+  display: flex;
+  column-gap: 20px;
+  margin-bottom: 15px;
+}
+.title{
+
+}
+.input{
+  padding: 5px;
+  border: 1px black solid;
+
+}
+
+.inputError{
+  border: 1px red solid;
+}
+
+.itemContact{
+  padding-left: 50px;
+  font-size: 18px;
+  display: flex;
+  column-gap: 20px;
+  margin-bottom: 15px;
+}
+
+.button{
+  padding: 5px 20px;
+}

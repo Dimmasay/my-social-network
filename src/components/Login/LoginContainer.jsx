@@ -7,7 +7,8 @@ const Login = (props) => {
 
     useEffect(() => {
         props.toIdentifyTC()
-    }, [])
+
+    }, [props.isAuth])
 
 
     return (<div className={style.container}>
@@ -23,5 +24,5 @@ const mapStateToProps = (state) => {
         isAuth: state.auth.isAuth
     }
 }
-const LoginContainer = connect(mapStateToProps, {toIdentifyTC,logInTC, logOutTC})(Login)
+const LoginContainer = connect(mapStateToProps, {logInTC, logOutTC, toIdentifyTC})(Login)
 export default LoginContainer

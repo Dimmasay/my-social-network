@@ -1,19 +1,19 @@
 import style from './App.module.scss';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from "./components/Header/Header";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import FollowersContainer from "./components/Followers/FollowersContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div className={style.wrapper}>
-                <Header/>
+                <HeaderContainer/>
                 <div className={style.content}>
                     <Routes>
                         <Route path='/profile/:userId?' element={<ProfileContainer/>}/>

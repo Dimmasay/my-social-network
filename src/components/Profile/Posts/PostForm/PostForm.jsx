@@ -32,7 +32,7 @@ const PostForm = (props) => {
                                     src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsc3WLwt1VO_zCe9FTBOByMFq7iya4QO38gA&usqp=CAU'/>
                             </div>
                             {touched.postBody && errors.postBody && <div>{errors.postBody}</div>}
-                            <Field className={style.input} name="postBody"/>
+                            <Field as='textarea' className={style.input} name="postBody"/>
                             <button type="submit" className={style.button}>Submit</button>
                         </div>
                     </Form>

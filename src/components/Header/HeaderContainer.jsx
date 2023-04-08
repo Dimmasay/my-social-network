@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import style from './Header.module.scss'
+import {connect} from "react-redux";
 
 const setActive = (link) => link.isActive ? `${style.link} ${style.active}` : style.link
 
@@ -9,7 +10,7 @@ const Header = (props) => {
             <nav className={style.container}>
                 <ul className={style.list}>
                     <li className={style.item}>
-                        <NavLink to='./profile' className={setActive}>
+                        <NavLink to={`./profile/${props.myId}`} className={setActive}>
                             My profile
                         </NavLink>
                     </li>
@@ -43,4 +44,10 @@ const Header = (props) => {
         </div>
     )
 }
-export default Header
+const mapStateToProps = (state) => {
+    return {
+        myId: state.auth.id
+    }
+}
+const HeaderContainer = connect(mapStateToProps, {})(Header)
+export default HeaderContainer

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 const About = (props) => {
 
-
     let contacts = Object.keys(props.profile.contacts).map(key  => {
        return( <div className={style.itemContact} key={key}>
             <div className={style.nameContact}>{key}</div>

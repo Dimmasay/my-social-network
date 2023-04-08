@@ -23,4 +23,5 @@ const store = legacy_createStore(
     )
 );
 
+window.store = store
 export default store

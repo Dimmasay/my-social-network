@@ -42,15 +42,22 @@ export const logOutAC = () => ({type: SET_LOGOUT})
 //Thunk Creators
 export const toIdentifyTC = () => async (dispatch) => {
     let response = await authAPI.getAuth()
-    if (response.data.resultCode === 0) {
-        dispatch(toIdentifyAC(response.data.data))
+    try {
+        response.data.resultCode === 0 && dispatch(toIdentifyAC(response.data.data))
+    } catch (e) {
+        alert(e)
     }
+
+
 }
 export const logInTC = (userData) => async (dispatch) => {
     let response = await authAPI.logIn(userData)
-    console.log(response)
-    if (response.data.resultCode === 0) {
-        dispatch(toIdentifyTC())
+    debugger
+    try {
+        response.data.resultCode === 0 && dispatch(toIdentifyTC())
+
+    } catch (e) {
+        alert(e)
     }
 }
 export const logOutTC = () => async (dispatch) => {

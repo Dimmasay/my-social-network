@@ -29,7 +29,7 @@ const MessageForm = (props) => {
                     <Form>
                         <div className={style.container}>
                             {touched.postBody && errors.postBody && <div>{errors.postBody}</div>}
-                            <Field className={style.input} name="message"/>
+                            <Field as='textarea' className={style.input} name="message"/>
                             <button type="submit" className={style.button}>Submit</button>
                         </div>
                     </Form>
