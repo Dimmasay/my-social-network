@@ -26,11 +26,17 @@
 
 .input {
   flex: 1 1 auto;
+  height: 70px;
   font-size: 16px;
   padding: 10px;
+  resize: none;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .button {
   padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
 
 }

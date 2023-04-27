@@ -2,20 +2,30 @@
   padding: 10px;
   background-color: antiquewhite;
   border-radius: 10px;
-  display: flex;
   margin-bottom: 10px;
   padding-left: 20px;
+  color: black;
+  letter-spacing: 1.3px;
+  &:hover{
+    background-color: #f8d8b0;
+
+  }
+}
+.activeItem{
+  background-color: #c9af31;
 }
 
 .link {
-  width: 100%;
+  min-width: 200px;
   display: flex;
+  flex-wrap: wrap;
   cursor: pointer;
 }
 
 .avatar {
   flex: 0 0 50px;
   position: relative;
+  //padding-bottom: 50%;
   height: 50px;
   overflow: hidden;
   border-radius: 5px;
@@ -31,13 +41,12 @@
   }
 }
 
-.user {
+
+.name {
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.name {
-  font-size: 20px;
+  font-size: 16px;
+  color: inherit;
 }

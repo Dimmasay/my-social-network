@@ -1,42 +1,60 @@
-.container{
-  padding: 10px;
+.container {
   background-color: mediumpurple;
 }
-.header{
+
+.header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  background-color: lightgoldenrodyellow;
+  padding: 5px;
 }
-.title{
+
+.title {
 }
-.buttonAll{
+
+.showAll {
   padding: 5px 10px;
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  color: inherit;
 }
-.body{
+
+.body {
 
 }
-.list{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-}
-.item{}
-.itemBody{
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  column-gap: 30px;
+  row-gap: 20px;
   padding: 10px;
+}
+
+.item {
+
+}
+
+.itemBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   background-color: cadetblue;
   border-radius: 10px;
 }
-.itemAvatar{
+
+.itemAvatar {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   height: 80px;
   width: 80px;
   margin-bottom: 10px;
-  img{
+
+  img {
     position: absolute;
     top: 0;
     left: 0;
@@ -45,15 +63,28 @@
     object-fit: cover;
   }
 }
-.name{
+
+.name {
   margin-bottom: 10px;
   text-align: center;
 }
-.buttons{
+
+.buttons {
   display: flex;
   flex-direction: column;
 
 }
-.button{
+
+.button {
   margin-bottom: 10px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: cyan;
+}
+.buttonMessage{
+  padding: 5px 25px;
+  border-radius: 5px;
+  background-color: #045886;
+  color: white;
+  text-align: center;
 }

@@ -7,8 +7,7 @@ const Login = (props) => {
 
     useEffect(() => {
         props.toIdentifyTC()
-
-    }, [props.isAuth])
+    }, [])
 
 
     return (<div className={style.container}>
@@ -16,12 +15,14 @@ const Login = (props) => {
             logInTC={props.logInTC}
             logOutTC={props.logOutTC}
             isAuth={props.isAuth}
+            myId={props.myId}
         />
     </div>)
 }
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        myId: state.auth.id
     }
 }
 const LoginContainer = connect(mapStateToProps, {logInTC, logOutTC, toIdentifyTC})(Login)

@@ -1,11 +1,13 @@
 import style from './ProfileInfo.module.scss'
 import React, {useEffect, useState} from "react";
-
+import addPhoto from './../../../files/images/icons/camera-add-photo-svgrepo-com.svg'
 const ProfileInfo = (props) => {
+
 
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
     const activeMode = () => {
+        props.isOwner && setStatus(props.status)
         setEditMode(true)
     }
     const saveUpdateStatus = () => {
@@ -17,6 +19,12 @@ const ProfileInfo = (props) => {
         setStatus(e.currentTarget.value)
     }
 
+    useEffect(() => {
+        return () => {
+            props.isOwner && setStatus(props.status)
+            setEditMode(false)
+        }
+    }, [props.isOwner])
 
     return (
         <div className={style.container}>
@@ -31,19 +39,18 @@ const ProfileInfo = (props) => {
                     </div>
                     {props.isOwner ? <FileUploader updateAvatarTC={props.updateAvatarTC} myId={props.myId}/> : null}
                 </div>
-                <div>
-                </div>
+
                 <div className={style.info}>
                     <div className={style.name}>{props.fullName}</div>
                     {editMode
-                        ? <input value={status} onChange={updateStatus}/>
+                        ? <input className={style.input} value={status} onChange={updateStatus}/>
                         : <div className={style.status}>{!!props.status ? props.status : 'Status'}</div>
                     }
                 </div>
                 {props.isOwner
                     ? editMode
-                        ? <button className={style.buttonEdit} onClick={saveUpdateStatus}>Save</button>
-                        : <button className={style.buttonEdit} onClick={activeMode}>Edit status</button>
+                        ? <button className={`${style.button} ${style.buttonSave}`} onClick={saveUpdateStatus}>Save</button>
+                        : <button className={`${style.button} ${style.buttonEdit}`} onClick={activeMode}>Edit status</button>
 
                     : null}
 
@@ -70,7 +77,7 @@ const FileUploader = props => {
     };
     return (
         <div className={style.custom}>
-            <button className={style.customButton} onClick={handleClick}>Add</button>
+            <div className={style.customButtonAddPhoto} onClick={handleClick}></div>
             <input
                 type="file"
                 ref={hiddenFileInput}

@@ -6,9 +6,9 @@ const ADD_DIALOG = '/messageReducer/ADD_DIALOG'
 
 const initialState = {
     dialogs: [
-        {userName: 'Dima', messages: ['Hello, I`m fine', 'Yes'], userId: 9},
-        {userName: 'Tanya', messages: ['Abrakadabra', 'no'], userId: 5},
-        {userName: 'Larisa', messages: ['Happy Birthday', 'Hello'], userId: 7},
+        {userName: 'Dima', photo: null, messages: ['Hello, I`m fine', 'Yes'], userId: 9},
+        {userName: 'Tanya', photo: null, messages: ['Abrakadabra', 'no'], userId: 5},
+        {userName: 'Larisa', photo: null, messages: ['Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello '], userId: 7},
     ],
 
 
@@ -29,13 +29,16 @@ const messageReducer = (state = initialState, action) => {
         case ADD_DIALOG:
             return {
                 ...state,
-                dialogs: [
-                    ...state.dialogs, {
-                        userName: action.userName,
-                        messages: ['',],
-                        userId: action.id
-                    }
-                ]
+                dialogs: state.dialogs.some(dialog => dialog.userId === action.id)
+                    ?[...state.dialogs]
+                    :[...state.dialogs, {
+                            userName: action.userName,
+                            messages: [],
+                            userId: action.id,
+                            photo: action.photo
+                        }
+                    ]
+
             }
 
         default :
@@ -45,14 +48,9 @@ const messageReducer = (state = initialState, action) => {
 
 //Action Creators
 export const addMessageAC = (id, message) => ({type: ADD_MESSAGE, id, message})
-export const addDialogAC = (id, userName) => ({type: ADD_DIALOG, id, userName})
+export const addDialogAC = (id, userName, photo) => ({type: ADD_DIALOG, id, userName, photo})
 
 
-//Thunk Creators
-// export const setUsersTC = (page, count, friend) => async (dispatch) => {
-//     let data = await usersAPI.getUsers(page, count, friend)
-//     dispatch(setUsersAC(data.items))
-//     dispatch(setTotalCountAC(data.totalCount))
-// }
+
 
 export default messageReducer

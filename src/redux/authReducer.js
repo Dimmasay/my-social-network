@@ -2,8 +2,8 @@
 
 import {authAPI} from "../api/api";
 
-const TO_IDENTIFY = '/authReducer/TO_IDENTIFY'
-const SET_LOGOUT = '/authReducer/SET_LOGOUT'
+const TO_IDENTIFY = '.authReducer/TO_IDENTIFY'
+const SET_LOGOUT = '.authReducer/SET_LOGOUT'
 
 const initialState = {
     isAuth: false,
@@ -52,7 +52,6 @@ export const toIdentifyTC = () => async (dispatch) => {
 }
 export const logInTC = (userData) => async (dispatch) => {
     let response = await authAPI.logIn(userData)
-    debugger
     try {
         response.data.resultCode === 0 && dispatch(toIdentifyTC())
 

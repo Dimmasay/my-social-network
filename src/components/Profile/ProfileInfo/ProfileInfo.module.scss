@@ -1,3 +1,4 @@
+
 .container {
   background-color: #519a83;
   margin-bottom: 20px;
@@ -27,19 +28,20 @@
 .profile {
   padding: 10px;
   display: flex;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   column-gap: 20px;
 
 }
-.avatar{
+
+.avatar {
   position: relative;
-  flex: 0 0 150px;
+  flex: 0 1 150px;
 }
 
 .image {
   position: relative;
   width: 100%;
-  height: 150px;
+  padding-bottom: 100%;
   border-radius: 50%;
   overflow: hidden;
 
@@ -54,22 +56,49 @@
   }
 }
 
+.input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .info {
   flex: 1 1 auto;
 }
 
 .name {
-  font-size: 18px;
+  padding-top: 15px;
+  font-size: 24px;
+  font-weight: 700;
   letter-spacing: 1.5px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.buttonEdit {
-  flex: 0 0 100px;
+.button {
+  flex: 0 0 120px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 14px;
+  align-self: start;
+  border-radius: 5px;
+  padding-right: 30px;
 }
-.custom{
+.buttonEdit{
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    right: 5px;
+    background: url(./../../../files/images/icons/edit-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+}
+.buttonSave{
+  padding: 10px 20px;
+}
+
+.custom {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -77,6 +106,24 @@
   width: 15px;
   z-index: 10;
 }
-.customButton{
+
+.customButtonAddPhoto {
   font-size: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 28px;
+    width: 28px;
+    background: url(./../../../files/images/icons/camera-add-photo-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+  &:hover{
+    &:before{
+      transform: scale(1.1);
+    }
+  }
 }

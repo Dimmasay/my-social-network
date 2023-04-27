@@ -25,29 +25,37 @@ const Followers = (props) => {
             <li className={style.item}>
                 <div className={style.itemBody}>
                     <NavLink to={`/profile/${user.id}`} className={style.itemAvatar}>
-                        <img src={!!user.photos.small ? user.photos.small : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU'}/>
+                        <img
+                            src={!!user.photos.small ? user.photos.small : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU'}/>
                     </NavLink>
                     <div className={style.name}>{user.name}</div>
                     {user.followed
-                        ?<button
+                        ? <button
                             disabled={props.inFollowingProcess.includes(user.id)}
-                            onClick={()=>{props.unFollowUserTC(user.id)}}
+                            onClick={() => {
+                                props.unFollowUserTC(user.id)
+                            }}
                             className={style.button}>Unfollow</button>
-                        :<button
+                        : <button
                             disabled={props.inFollowingProcess.includes(user.id)}
-                            onClick={()=>{props.followUserTC(user.id)}}
+                            onClick={() => {
+                                props.followUserTC(user.id)
+                            }}
                             className={style.button}>Follow</button>
                     }
                     {user.followed && <NavLink to={`/messages/${user.id}`}
-                        onClick={()=>{props.addDialogAC(user.id, user.name)}}
-                        className={style.button}>Send Message</NavLink>
+                                               onClick={() => {
+                                                   props.addDialogAC(user.id, user.name, user.photos.small)
+                                               }}
+                                               className={style.buttonMessage}>Send Message</NavLink>
                     }
                 </div>
             </li>)
     })
 
+
     return (
-        <div>
+        <div className={style.container}>
             <Pagination {...props}/>
             <ul className={style.list}>
                 {arrayFollowers}
@@ -73,5 +81,5 @@ const FollowersContainer = compose(
         addDialogAC
     }),
     withAuthRedirect
-) (Followers)
+)(Followers)
 export default FollowersContainer

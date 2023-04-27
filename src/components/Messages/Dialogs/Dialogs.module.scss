@@ -1,10 +1,13 @@
 .container{
   background-color: darkgoldenrod;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .list{
-
+  overflow: auto;
 }
 
 .title{

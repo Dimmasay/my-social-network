@@ -36,7 +36,7 @@ const Users = (props) => {
     })
 
     return (
-        <div>
+        <div className={style.container}>
             <Pagination {...props}/>
             <ul className={style.list}>
                 {arrayUserOnPage}

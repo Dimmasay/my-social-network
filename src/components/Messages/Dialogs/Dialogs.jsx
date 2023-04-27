@@ -4,9 +4,12 @@ import Dialog from "./Dialog/Dialog";
 const Dialogs = (props) => {
 
     let dialogList = props.dialogs.map(dialog => {
-
         return (
-            <Dialog userId={dialog.userId} userName={dialog.userName}/>
+            <Dialog userId={dialog.userId}
+                    photo={dialog.photo}
+                    userName={dialog.userName}
+                    userIdMessage={props.userIdMessage}
+                    userIdLatestMessage={props.userIdLatestMessage}/>
 
         )
     })

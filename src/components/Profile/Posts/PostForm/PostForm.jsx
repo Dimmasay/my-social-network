@@ -28,12 +28,16 @@ const PostForm = (props) => {
                     <Form>
                         <div className={style.container}>
                             <div className={style.avatar}>
-                                <img
-                                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsc3WLwt1VO_zCe9FTBOByMFq7iya4QO38gA&usqp=CAU'/>
+                                <img src={props.photo}/>
                             </div>
-                            {touched.postBody && errors.postBody && <div>{errors.postBody}</div>}
-                            <Field as='textarea' className={style.input} name="postBody"/>
-                            <button type="submit" className={style.button}>Submit</button>
+                            {/*{touched.postBody && errors.postBody && <div>{errors.postBody}</div>}*/}
+                            <Field
+                                as='textarea'
+                                className={style.input}
+                                name="postBody"
+                                placeholder='Create new post'
+                            />
+                            <button type="submit" className={style.button}>Add post</button>
                         </div>
                     </Form>
                 )

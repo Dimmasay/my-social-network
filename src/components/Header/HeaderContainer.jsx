@@ -1,10 +1,17 @@
 import {NavLink} from "react-router-dom";
 import style from './Header.module.scss'
 import {connect} from "react-redux";
+import {logOutTC} from "../../redux/authReducer";
 
 const setActive = (link) => link.isActive ? `${style.link} ${style.active}` : style.link
 
 const Header = (props) => {
+
+    let logOut = () => {
+        props.logOutTC()
+    }
+
+
     return (
         <div className={style.header}>
             <nav className={style.container}>
@@ -35,9 +42,14 @@ const Header = (props) => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='./login' className={setActive}>
-                            Login
-                        </NavLink>
+                        {
+
+                        props.isAuth === true
+                        ? <button className={style.buttonOut} onClick={logOut}>Log Out</button>
+                            :<NavLink to='./login' className={setActive}>
+                                Login
+                            </NavLink>
+                        }
                     </li>
                 </ul>
             </nav>
@@ -46,8 +58,9 @@ const Header = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-        myId: state.auth.id
+        myId: state.auth.id,
+        isAuth: state.auth.isAuth
     }
 }
-const HeaderContainer = connect(mapStateToProps, {})(Header)
+const HeaderContainer = connect(mapStateToProps, {logOutTC})(Header)
 export default HeaderContainer

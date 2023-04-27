@@ -5,7 +5,14 @@ import Posts from "./Posts/Posts";
 import About from "./About/About";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {connect} from "react-redux";
-import {addPostAC, getProfileTC, getStatusTC, updateAvatarTC, updateStatusTC} from "../../redux/profileReducer";
+import {
+    addPostAC,
+    getProfileTC,
+    getStatusTC,
+    likePostAC,
+    updateAvatarTC,
+    updateStatusTC
+} from "../../redux/profileReducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {useEffect} from "react";
@@ -14,7 +21,7 @@ import Preloader from "../common/Preloader/Preloader";
 
 
 const Profile = (props) => {
-    let idCurrentProfile = parseInt(props.match.userId)
+    let idCurrentProfile = parseInt(props.match.userId) || props.myId
 
     let isOwner = (parseInt(props.match.userId) === props.myId)
 
@@ -36,6 +43,7 @@ const Profile = (props) => {
                     <div className={style.columnLeft}>
                         <ProfileInfo
                             myId={props.myId}
+                            userId={props.profile.userId}
                             fullName={props.profile.fullName}
                             photo={props.profile.photos.small}
                             status={props.status}
@@ -43,12 +51,16 @@ const Profile = (props) => {
                             isOwner={isOwner}
                             updateAvatarTC={props.updateAvatarTC}
                         />
-                        <Posts addPostAC={props.addPostAC} posts={props.posts}/>
+                        <Posts
+                            addPostAC={props.addPostAC}
+                            likePostAC={props.likePostAC}
+                            posts={props.posts}
+                            photo={props.profile.photos.small}
+                            fullName={props.profile.fullName}
+                        />
                     </div>
                     <div className={style.columnRight}>
-                        <About
-                            profile={props.profile}
-                        />
+                        <About  profile={props.profile}/>
                         <FollowersPreview/>
                     </div>
                 </div>
@@ -67,7 +79,7 @@ const mapStateToProps = (state) => {
 
 const ProfileContainer = compose(
     connect(mapStateToProps, {
-        addPostAC, getProfileTC, getStatusTC, updateStatusTC, updateAvatarTC
+        addPostAC, getProfileTC, getStatusTC, updateStatusTC, updateAvatarTC, likePostAC
     }),
     withRouter,
     withAuthRedirect

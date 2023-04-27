@@ -1,8 +1,8 @@
 .header {
+  min-width: 100%;
   flex: 0 0 70px;
   background-color: #519a83;
   display: flex;
-
   align-items: center;
 
 }
@@ -16,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  column-gap: 30px;
   font-size: 18px;
 }
 
@@ -25,12 +25,29 @@
 }
 
 .link {
+  background-color: cornflowerblue;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: inherit;
+  transition: all 0.5s ease 0s;
   &:hover{
-    color: #41c20e;
+    box-shadow: 0 0 10px #0641ad;
   }
   color: inherit;
   &.active {
-    text-decoration: underline;
+    background-color: #0641ad;
+    color: white;
   }
+
+}
+
+.buttonOut {
+  color: wheat;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #692224;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  transition: all 0.2s ease 0s;
 
 }
