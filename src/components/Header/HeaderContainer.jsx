@@ -21,27 +21,27 @@ const Header = (props) => {
                             My profile
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={style.item}>
                         <NavLink to='./messages' className={setActive}>
                             Messages
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={style.item}>
                         <NavLink to='./users' className={setActive}>
                             Users
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={style.item}>
                         <NavLink to='./followers' className={setActive}>
                             Followers
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={style.item}>
                         <NavLink to='./settings' className={setActive}>
                             Settings
                         </NavLink>
                     </li>
-                    <li>
+                    <li className={style.item}>
                         {
 
                         props.isAuth === true

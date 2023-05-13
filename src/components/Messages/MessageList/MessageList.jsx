@@ -6,8 +6,8 @@ import {useEffect, useRef} from "react";
 const MessageList = (props) => {
     let currentDialog = props.dialogs.filter(dialog => dialog.userId === (props.userIdMessage || props.userIdLatestMessage))
 
-    let messageList = currentDialog[0].messages.map(message => {
-        return (<Message message={message} profile={props.profile}/>)
+    let messageList = currentDialog[0].messages.map((message, key) => {
+        return (<Message message={message} profile={props.profile} key={key}/>)
     })
 
     const messagesEndRef = useRef(null)
@@ -22,7 +22,7 @@ const MessageList = (props) => {
 
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <div className={style.messageContent}>
                 {
                     currentDialog[0].messages.length === 0

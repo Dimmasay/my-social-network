@@ -1,15 +1,13 @@
-.wrapper{
-  max-width: 1400px;
-  margin: 0 auto;
+.wrapper {
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: lightgoldenrodyellow;
 }
 
-.content{
-  background-color: #316996;
+
+.main {
+  background: #fcf8f3;
   flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 0px 15px 0px 15px;
 }

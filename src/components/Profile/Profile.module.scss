@@ -1,28 +1,35 @@
-.preloader{
+@import "./../../index";
+
+.preloader {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 150px;
+
 }
 
 .container {
-
+  width: 100%;
 }
 
-.row{
-  display: flex;
-  column-gap: 10px;
+.body {
+  display: grid;
+  grid-template-rows: [top] auto [main-top] auto [main-bottom] 1fr [bottom] auto;
+  grid-template-columns: 65% 35%;
+  grid-template-areas:
+              "profile about"
+              "posts about"
+              "posts followers"
+              "posts followers";
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 100%;
+    grid-template-areas:
+            "profile"
+            "about"
+            "posts"
+            "followers";
+  }
 }
 
-.columnLeft{
-  flex: 1 1 65%;
-}
 
-.columnRight{
-  flex: 1 1 35%;
-
-}
-
-.content{
-  max-width: 100%;
-}

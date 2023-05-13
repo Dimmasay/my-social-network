@@ -1,5 +1,12 @@
-.container {
-  background-color: mediumpurple;
+@import './../../../index';
+
+.body {
+  background-color: $turquoiseColor;
+  grid-area: followers;
+  align-self: start;
+  @media (max-width: $mobile) {
+  display: none;
+  }
 }
 
 .header {
@@ -7,18 +14,35 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: lightgoldenrodyellow;
-  padding: 5px;
+  font-size: 18px;
+  background-color: $lightTurquoiseColor;
+  padding: 10px;
+  @media (max-width: $tablet) {
+    row-gap: 10px;
+    justify-content: center;
+  }
 }
 
 .title {
+  padding-right: 10px;
 }
 
 .showAll {
   padding: 5px 10px;
-  background-color: cornflowerblue;
   border-radius: 5px;
-  color: inherit;
+  background-color: $darkTurquoiseColor;
+  color: white;
+  border: 2px solid $darkTurquoiseColor;
+
+  &:hover {
+    transition: all 0.2s ease 0s;
+    background-color: $turquoiseColor;
+    border: 2px solid $darkTurquoiseColor;
+  }
+
+  &:active {
+    transform: translate(1px, -1px);
+  }
 }
 
 .body {
@@ -27,7 +51,7 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   column-gap: 30px;
   row-gap: 20px;
   padding: 10px;
@@ -42,7 +66,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: cadetblue;
+  background-color: $lightTurquoiseColor;
   border-radius: 10px;
 }
 
@@ -65,26 +89,104 @@
 }
 
 .name {
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-
-}
 
 .button {
-  margin-bottom: 10px;
-  padding: 5px 15px;
+  margin-bottom: 15px;
+  padding: 5px 30px 5px 10px;
+  font-size: 16px;
   border-radius: 5px;
-  background-color: cyan;
+  background-color: $lightTurquoiseColor;
+  color: $brownColor;
+  font-weight: 600;
+  border: 1px solid #5c3d46;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease 0s;
+
+  &:after {
+    position: absolute;
+    content: "";
+    filter: $brownFilter;
+    height: 20px;
+    width: 20px;
+    right: 5px;
+    background-size: contain;
+  }
+
+  &:hover {
+    &:after {
+      filter: $brownFilter;
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    &:after {
+      transform: scale(0.9) rotate(15deg) translate(1px, -1px);
+    }
+  }
 }
-.buttonMessage{
-  padding: 5px 25px;
+
+.buttonUnFollow {
+  &:after {
+    background: url(./../../../files/images/icons/unfollow-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+}
+
+.buttonFollow {
+  &:after {
+    background: url(./../../../files/images/icons/add-user-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+}
+
+
+.buttonMessage {
+  padding: 5px 30px 5px 10px;
   border-radius: 5px;
-  background-color: #045886;
+  border: 1px solid $brownColor;
+  background-color: $brownColor;
   color: white;
   text-align: center;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease 0s;
+
+  &:after {
+    position: absolute;
+    content: "";
+    filter: $whiteFilter;
+    height: 24px;
+    width: 24px;
+    right: 5px;
+    background: url(./../../../files/images/icons/send-2-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+
+  &:hover {
+    border: 1px solid $brownColor;
+    background-color: $lightTurquoiseColor;
+    color: $brownColor;
+
+    &:after {
+      filter: $brownFilter;
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    &:after {
+      transform: scale(0.9) rotate(15deg) translate(1px, -1px);
+    }
+  }
 }

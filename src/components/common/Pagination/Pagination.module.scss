@@ -1,0 +1,99 @@
+@import './../../../index.scss';
+
+.pagination {
+  display: flex;
+
+  justify-content: center;
+}
+
+.body {
+max-width: 900px;
+  margin: 0 auto;
+  gap: 10px;
+  display: grid;
+  justify-content: space-between;
+  @media (min-width: 630px) {
+    grid-template-areas:
+  'buttonPortionPrev buttonPagePrev list buttonPageNext buttonPortionNext';
+  }
+  @media (max-width: 630px) {
+    grid-template-areas:
+  'buttonPortionPrev list buttonPortionNext'
+  'buttonPagePrev list buttonPageNext';
+  }
+
+}
+
+.pagesList {
+  grid-area: list;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  grid-area: button;
+  //flex: 0 0 40px;
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 15px;
+  background-color: $lightTurquoiseColor;
+  border: 2px solid $turquoiseColor;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $turquoiseColor;
+    }
+  }
+
+  &:disabled {
+    border: 2px solid $lightTurquoiseColor;
+    cursor: inherit;
+
+    &:hover {
+      background-color: $lightTurquoiseColor;
+    }
+  }
+
+  @media (max-width: $mobile) {
+
+padding: 15px 10px;
+  }
+}
+
+
+
+.buttonPortionPrev{
+  grid-area: buttonPortionPrev;
+}
+.buttonPortionNext{
+  grid-area: buttonPortionNext;
+}
+.buttonPagePrev{
+  grid-area: buttonPagePrev;
+}
+.buttonPageNext{
+  grid-area: buttonPageNext;
+}
+.pageNumber {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease 0s;
+  border: 2px solid $lightTurquoiseColor;
+  border-radius: 5px;
+  overflow: hidden;
+
+}
+
+.pageNumber:hover {
+  border: 2px solid $turquoiseColor;
+
+}
+
+
+.pageNumberSelected {
+  background-color: $turquoiseColor;
+}

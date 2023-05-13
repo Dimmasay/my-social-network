@@ -13,8 +13,8 @@ const FollowersPreview = (props) => {
 
     let arrayFollowers = props.prevFriends.map(user => {
         return (
-            <li className={style.item}>
-                <div className={style.itemBody}>
+            <li className={style.item} key={user.id}>
+                <div className={style.itemBody} >
                     <NavLink to={`/profile/${user.id}`} className={style.itemAvatar}>
                         <img
                             src={!!user.photos.small ? user.photos.small : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU'}/>
@@ -26,13 +26,13 @@ const FollowersPreview = (props) => {
                             onClick={() => {
                                 props.unFollowUserTC(user.id)
                             }}
-                            className={style.button}>Unfollow</button>
+                            className={`${style.button} ${style.buttonUnFollow}`}>Unfollow</button>
                         : <button
                             disabled={props.inFollowingProcess.includes(user.id)}
                             onClick={() => {
                                 props.followUserTC(user.id)
                             }}
-                            className={style.button}>Follow</button>
+                            className={`${style.button} ${style.buttonFollow}`}>Follow</button>
                     }
                     {user.followed && <NavLink to={`/messages/${user.id}`}
                                                onClick={() => {
@@ -46,7 +46,7 @@ const FollowersPreview = (props) => {
 
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <div className={style.header}>
                 <h3 className={style.title}>My best friends</h3>
                 <NavLink to={`/followers/`} className={style.showAll}>Show all friends</NavLink>

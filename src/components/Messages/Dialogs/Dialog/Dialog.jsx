@@ -5,8 +5,8 @@ const Dialog = (props) => {
 
 
     return (
-        <li className={props.userId === (props.userIdMessage) ? `${style.activeItem} ${style.item}` : style.item}>
-            <NavLink to={`/messages/${props.userId}`} className={style.link}>
+        <li className={props.userId === (props.userIdMessage) ? `${style.activeItem} ${style.item}` :`${style.item}`}>
+            <NavLink to={`/messages/${props.userId}`} className={style.link} onClick={props.activeMode}>
                 <div className={style.avatar}>
                     <img src={
                         !!props.photo

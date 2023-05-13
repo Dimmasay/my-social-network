@@ -26,8 +26,7 @@ const MessageForm = (props) => {
         >
             {({errors, touched,}) => {
                 return (
-                    <Form className={style.container}>
-
+                    <Form className={style.body}>
                         {touched.postBody && errors.postBody && <div>{errors.postBody}</div>}
                         <Field as='textarea'
                                className={style.input}
@@ -37,8 +36,7 @@ const MessageForm = (props) => {
                         <button
                             type="submit"
                             className={style.button}
-                        >Send</button>
-
+                        ></button>
                     </Form>
                 )
             }}

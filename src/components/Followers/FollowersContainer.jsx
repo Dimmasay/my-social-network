@@ -18,11 +18,9 @@ const Followers = (props) => {
 
 
     let arrayFollowers = props.users.map(user => {
-        // let addDialog = (id, name) => {
-        //     props.addDialogAC(id, name)
-        // }
+
         return (
-            <li className={style.item}>
+            <li className={style.item} key={user.id}>
                 <div className={style.itemBody}>
                     <NavLink to={`/profile/${user.id}`} className={style.itemAvatar}>
                         <img
@@ -35,13 +33,13 @@ const Followers = (props) => {
                             onClick={() => {
                                 props.unFollowUserTC(user.id)
                             }}
-                            className={style.button}>Unfollow</button>
+                            className={`${style.button} ${style.buttonUnFollow}`}>Unfollow</button>
                         : <button
                             disabled={props.inFollowingProcess.includes(user.id)}
                             onClick={() => {
                                 props.followUserTC(user.id)
                             }}
-                            className={style.button}>Follow</button>
+                            className={`${style.button} ${style.buttonFollow}`}>Follow</button>
                     }
                     {user.followed && <NavLink to={`/messages/${user.id}`}
                                                onClick={() => {
@@ -56,7 +54,10 @@ const Followers = (props) => {
 
     return (
         <div className={style.container}>
-            <Pagination {...props}/>
+
+            <div className={style.header}>
+                <Pagination {...props}/>
+            </div>
             <ul className={style.list}>
                 {arrayFollowers}
             </ul>

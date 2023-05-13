@@ -1,10 +1,12 @@
+@import "./../../index";
+
 .header {
-  min-width: 100%;
+  position: relative;
+  //z-index: 200;
   flex: 0 0 70px;
-  background-color: #519a83;
+  background-color: $turquoiseColor;
   display: flex;
   align-items: center;
-
 }
 
 .container {
@@ -15,38 +17,56 @@
 .list {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 15px;
   align-items: center;
-  column-gap: 30px;
-  font-size: 18px;
+  //column-gap: 30px;
+  font-size: 20px;
+  color: white;
+  padding: 5px 0px;
+
 }
 
 .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
 
+  &:not(:last-child) {
+    border-right: 2px solid white;
+  }
 }
 
 .link {
-  background-color: cornflowerblue;
-  padding: 5px 15px;
+  //padding: 5px 15px;
   border-radius: 10px;
   color: inherit;
   transition: all 0.5s ease 0s;
-  &:hover{
-    box-shadow: 0 0 10px #0641ad;
+
+  &:hover {
+    //box-shadow: 0 5px 10px #0641ad;
   }
-  color: inherit;
+
+
   &.active {
-    background-color: #0641ad;
-    color: white;
+    //background-color: $lightTurquoiseColor;
+    color: $darkTurquoiseColor;
+    text-shadow: 0 0 15px white;
   }
 
 }
 
 .buttonOut {
-  color: wheat;
-  padding: 5px;
+  background-color: $lightTurquoiseColor;
+  color: $brownColor;
+  font-weight: 600;
+  border: 1px solid #5c3d46;
+  padding: 3px 5px;
   border-radius: 5px;
-  background-color: #692224;
-  font-size: 16px;
+
+
   letter-spacing: 1.5px;
   transition: all 0.2s ease 0s;
 

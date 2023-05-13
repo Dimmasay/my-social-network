@@ -16,7 +16,7 @@ const About = (props) => {
 
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <div className={style.aboutItem}>
                 <h2 className={style.aboutTitle}>About me:</h2>
                 <div className={style.aboutText}>{props.profile.aboutMe}</div>
@@ -30,7 +30,7 @@ const About = (props) => {
                 }
             </div>
             <div className={style.jobDescrip}>
-                <h2 className={style.title}>Looking for a job description</h2>
+                <h2 className={style.title}>Looking for a job description:</h2>
                 <div className={style.textDescrip}>{props.profile.lookingForAJobDescription}</div>
             </div>
             <div>

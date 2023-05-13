@@ -1,17 +1,36 @@
-.container{
-  background-color: darkgoldenrod;
-  padding: 10px;
+@import './../../../index';
+.body{
+  background-color: $turquoiseColor;
+  border: 5px solid $darkTurquoiseColor;
+  border-right: none;
+  border-top: none;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
+  font-size: 18px;
+  @media (max-width: $tablet) {
+    //border-right: 5px solid $darkTurquoiseColor;
+    //border-top: 5px solid $darkTurquoiseColor;
+    border: 5px solid $lightTurquoiseColor;
+    max-height: 100%;
+  }
 }
 
 .list{
   overflow: auto;
+  padding: 20px;
+  @media (max-width: $tablet) {
+    height: 100%;
+    //flex: 0 1 450px;
+  }
+
 }
 
 .title{
+  color: white;
+  letter-spacing: 1.3px;
+  padding: 20px ;
   font-size: 20px;
+  background-color: $darkTurquoiseColor;
   text-align: center;
-  margin-bottom: 30px;
 }

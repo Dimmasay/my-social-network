@@ -3,6 +3,7 @@ import {Field, Form, Formik} from "formik";
 import style from './LoginForm.module.scss'
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import Preloader from "../../common/Preloader/Preloader";
 
 const LoginForm = (props) => {
     const navigate = useNavigate()
@@ -44,11 +45,10 @@ const LoginForm = (props) => {
         >
             {({errors, touched,}) => {
                 return (
-                    <div className={style.container}>
+                    <div className={style.body}>
                         {props.isAuth
                             ? <div className={style.authImage}>
-                                <img
-                                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwvHtNu436pKhxc7orgHaGDDM2XcbaA64J5A&usqp=CAU'/>
+                                <Preloader/>
                             </div>
                             : <Form>
                                 <div className={style.form}>
@@ -70,9 +70,9 @@ const LoginForm = (props) => {
                                     <button type="submit" className={style.button}>Submit</button>
                                 </div>
                             </Form>}
-                        <div>
-                            <button className={style.buttonOut} onClick={logOut}>Log Out</button>
-                        </div>
+                        {/*<div>*/}
+                        {/*    <button className={style.buttonOut} onClick={logOut}>Log Out</button>*/}
+                        {/*</div>*/}
                     </div>
                 )
             }}

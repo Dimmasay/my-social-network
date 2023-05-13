@@ -1,4 +1,4 @@
-import style from './Pagination.module.css'
+import style from './Pagination.module.scss'
 import {useEffect, useState} from "react";
 
 
@@ -37,6 +37,7 @@ const Pagination = (props) => {
         })
         .map((page => {
             return (<div
+                    key={page}
                     className={props.page === page
                         ? `${style.pageNumber} ${style.pageNumberSelected}`
                         : style.pageNumber}
@@ -80,13 +81,14 @@ const Pagination = (props) => {
 
     return (
         <div className={style.pagination}>
-            <div className={style.container}>
-                <button className={style.button}
+            <div className={style.body}>
+                <button className={`${style.button} ${style.buttonPortionPrev}`}
                         onClick={setPrevPortion}
                         disabled={props.page <= portionSize && true}
+
                 >Prev {portionSize}
                 </button>
-                <button className={style.button}
+                <button className={`${style.button} ${style.buttonPagePrev}`}
                         onClick={setPrevPage}
                         disabled={props.page === 1 && true}
                 >Prev
@@ -94,13 +96,13 @@ const Pagination = (props) => {
                 <div className={style.pagesList}>
                     {arrayPageNumbers}
                 </div>
-                <button className={style.button}
+                <button className={`${style.button} ${style.buttonPageNext}`}
                         onClick={setNextPage}
                         disabled={props.page === totalPages && true}
                 >Next
 
                 </button>
-                <button className={style.button}
+                <button className={`${style.button} ${style.buttonPortionNext}`}
                         onClick={setNextPortion}
                         disabled={ rightLimitNumber + portionSize > totalPages && true}
                 >Next {portionSize}

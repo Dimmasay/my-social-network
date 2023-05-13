@@ -27,10 +27,9 @@ const ProfileInfo = (props) => {
     }, [props.isOwner])
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <div className={style.banner}>
-                <img
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7QLTj93YGgeuaI2RPFVHu7uLbq_lOGoGeRQ&usqp=CAU'/>
+                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7QLTj93YGgeuaI2RPFVHu7uLbq_lOGoGeRQ&usqp=CAU'/>
             </div>
             <div className={style.profile}>
                 <div className={style.avatar}>
@@ -39,20 +38,23 @@ const ProfileInfo = (props) => {
                     </div>
                     {props.isOwner ? <FileUploader updateAvatarTC={props.updateAvatarTC} myId={props.myId}/> : null}
                 </div>
-
                 <div className={style.info}>
-                    <div className={style.name}>{props.fullName}</div>
-                    {editMode
-                        ? <input className={style.input} value={status} onChange={updateStatus}/>
-                        : <div className={style.status}>{!!props.status ? props.status : 'Status'}</div>
-                    }
-                </div>
-                {props.isOwner
-                    ? editMode
-                        ? <button className={`${style.button} ${style.buttonSave}`} onClick={saveUpdateStatus}>Save</button>
-                        : <button className={`${style.button} ${style.buttonEdit}`} onClick={activeMode}>Edit status</button>
+                    <div className={style.header}>
+                        <div className={style.name}>{props.fullName}</div>
+                        {props.isOwner
+                            ? editMode
+                                ? <button className={`${style.button} ${style.buttonSave}`}
+                                          onClick={saveUpdateStatus}>Save</button>
+                                : <button className={`${style.button} ${style.buttonEdit}`} onClick={activeMode}>Edit
+                                    status</button>
 
-                    : null}
+                            : null}
+                    </div>
+                {editMode
+                    ? <input className={style.input} value={status} onChange={updateStatus}/>
+                    : <div className={style.status}>{!!props.status ? props.status : 'Status'}</div>
+                }
+                </div>
 
             </div>
         </div>

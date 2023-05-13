@@ -1,10 +1,13 @@
-.container {
-  background-color: cornflowerblue;
-  padding: 10px;
+@import './../../../../index';
+.body {
+  background-color: $darkTurquoiseColor;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 20px;
+  column-gap: 20px;
+  row-gap: 10px;
+  padding: 5px;
+  margin-bottom: 15px;
 }
 
 .avatar {
@@ -13,6 +16,7 @@
   position: relative;
   flex: 0 0 50px;
   height: 50px;
+  border: 2px solid $lightTurquoiseColor;
 
   img {
     position: absolute;
@@ -32,11 +36,24 @@
   resize: none;
   border-radius: 10px;
   overflow: hidden;
+  color: $brownColor;
+  letter-spacing: 1.3px;
 }
 
 .button {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
-
+  background-color: $lightTurquoiseColor;
+  color: $brownColor;
+  font-weight: 600;
+  border: 1px solid #5c3d46;
+  transition: all 0.2s ease 0s;
+  &:active{
+    background-color: $brownColor;
+    color: $lightTurquoiseColor;
+  }
+  @media (max-width: $mobileSmall) {
+    flex: 0 0 100%;
+  }
 }

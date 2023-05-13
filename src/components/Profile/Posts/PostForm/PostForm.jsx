@@ -26,7 +26,7 @@ const PostForm = (props) => {
             {({errors, touched,}) => {
                 return (
                     <Form>
-                        <div className={style.container}>
+                        <div className={style.body}>
                             <div className={style.avatar}>
                                 <img src={props.photo}/>
                             </div>

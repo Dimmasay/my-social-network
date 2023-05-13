@@ -1,11 +1,14 @@
 import {profileAPI} from "../api/api";
+// import {toIdentifyAC} from "./authReducer";
 
 const ADD_POST = '.profileReducer/ADD_POST'
 const SET_PROFILE = '.profileReducer/SET_PROFILE'
 const SET_STATUS = '.profileReducer/SET_STATUS'
 const LIKE_POST = '.profileReducer/LIKE_POST'
+const UPDATE_IS_SUCCESS = '.profileReducer/UPDATE_IS_SUCCESS'
 
 const initialState = {
+    isUpdate: false,
     status: '',
     profile: null,
     posts: [
@@ -32,17 +35,19 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [...state.posts, {
-                    id: 4, text: action.post, likes: 0
+                    id: state.posts[state.posts.length - 1].id + 1,
+                    text: action.post,
+                    likes: 0
                 }]
             }
         case LIKE_POST:
             return {
                 ...state,
                 posts: state.posts.map(post => {
-                    if(post.id === action.idPost){
+                    if (post.id === action.idPost) {
                         return {...post, likes: post.likes + 1}
                     } else {
-                       return post
+                        return post
                     }
                 })
             }
@@ -56,6 +61,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case UPDATE_IS_SUCCESS:
+            return {
+                ...state,
+                isUpdate: action.value
+            }
         default :
             return state
     }
@@ -66,6 +76,7 @@ export const addPostAC = (post) => ({type: ADD_POST, post})
 export const likePostAC = (idPost) => ({type: LIKE_POST, idPost})
 export const setProfileAC = (profile) => ({type: SET_PROFILE, profile})
 export const setStatusAC = (status) => ({type: SET_STATUS, status})
+export const setUpdateAC = (value) => ({type: UPDATE_IS_SUCCESS, value})
 
 
 //Thunk Creators
@@ -77,10 +88,15 @@ export const getStatusTC = (userId) => async (dispatch) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setStatusAC(response.data))
 }
-export const updateProfileTC = (myId, profile) => async (dispatch) => {
+export const updateProfileTC = (myId, profile, setStatus) => async (dispatch) => {
     let response = await profileAPI.updateProfile(profile)
-    if (response) {
+
+    if (response.data.resultCode === 0) {
         dispatch(getProfileTC(myId))
+        dispatch(setUpdateAC(true))
+    } else {
+        setStatus(response.data.messages[0])
+        dispatch(setUpdateAC(false))
     }
 }
 export const updateStatusTC = (myId, status) => async (dispatch) => {

@@ -18,7 +18,6 @@ export const profileAPI = {
         return instance.get(`profile/status/${userId}`)
     },
     updateProfile: (data) => {
-        debugger
         return instance.put(`profile/`, data)
             .then((response) => {
                 return response

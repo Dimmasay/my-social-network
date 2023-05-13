@@ -39,8 +39,7 @@ const Profile = (props) => {
     } else {
         return (
             <div className={style.container}>
-                <div className={style.row}>
-                    <div className={style.columnLeft}>
+                <div className={style.body}>
                         <ProfileInfo
                             myId={props.myId}
                             userId={props.profile.userId}
@@ -58,11 +57,10 @@ const Profile = (props) => {
                             photo={props.profile.photos.small}
                             fullName={props.profile.fullName}
                         />
-                    </div>
-                    <div className={style.columnRight}>
+
                         <About  profile={props.profile}/>
                         <FollowersPreview/>
-                    </div>
+
                 </div>
             </div>
         )

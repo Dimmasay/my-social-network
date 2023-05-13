@@ -1,18 +1,48 @@
+@import './../../../../index';
+
 .item {
-  padding: 10px;
-  background-color: antiquewhite;
+  padding: 10px 10px 10px 20px;
+  background-color: $lightTurquoiseColor;
   border-radius: 10px;
-  margin-bottom: 10px;
-  padding-left: 20px;
+  border: 3px solid $lightTurquoiseColor;
   color: black;
   letter-spacing: 1.3px;
-  &:hover{
-    background-color: #f8d8b0;
+  transition: all 0.2s ease 0s;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &:hover {
+    transition: all 0.1s ease 0s;
+    //transform: scale(1.01);
+    border: 3px solid $darkTurquoiseColor;
+  }
+
+  position: relative;
+  &:after {
+
+    transition: all 0.3s ease 0s;
+    position: absolute;
+    content: "";
+    filter: $darkTurquoiseFilter;
+    top: 50%;
+    height: 30px;
+    width: 30px;
+    right: 15px;
+    background: url(./../../../../files/images/icons/message-square-lines-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transform: translate(15px, -50%) scale(0);
 
   }
 }
-.activeItem{
-  background-color: #c9af31;
+
+.activeItem {
+  &:after{
+    opacity: 1;
+    transform: translate(0px, -50%) scale(1);
+  }
 }
 
 .link {

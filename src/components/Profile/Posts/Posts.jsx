@@ -25,9 +25,9 @@ const Posts = (props) => {
     })
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <PostForm addPostAC={props.addPostAC} photo={props.photo}/>
-            <div className={style.postContainer}>
+            <div className={style.postsList}>
                 <h2 className={style.title}>My Posts</h2>
                 <ul className={style.list}>
                     {postArray.reverse()}

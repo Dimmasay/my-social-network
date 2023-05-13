@@ -1,11 +1,11 @@
-.container {
-  height: 100%;
+@import './../../../index';
+
+.body {
   background-color: #91d5bf;
-  padding: 10px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
   margin-bottom: 20px;
+  height: 100%;
 }
 
 
@@ -17,21 +17,47 @@
   padding: 10px;
   resize: none;
   overflow: auto;
+  letter-spacing: 1.3px;
+
+  //Робимо скролбар невидимим
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+.input::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .button {
-  flex: 0 1 100px;
-  padding: 10px 20px;
+  background-color: $darkTurquoiseColor;
+  //flex: 0 0 100px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include adaptiveValue("flex-basis", 100, 80, 1);
+
+
+
   position: relative;
-  &:after{
+  min-height: 100%;
+
+  &:after {
     content: "";
-    //filter: invert(100%) sepia(0%) saturate(5452%) hue-rotate(339deg) brightness(113%) contrast(103%); //white filter for svg
+    filter: $whiteFilter;
     position: absolute;
-    height: 24px;
-    width: 24px;
-    right: 5px;
+    height: 44px;
+    width: 44px;
+    right: 2px;
+    top: 2px;
     background: url(./../../../files/images/icons/send-2-svgrepo-com.svg) center no-repeat;
     background-size: contain;
     transition: all 0.3s ease 0s;
+    transform: translate(-50%, 50%) scale(1);
+  }
+
+  &:active {
+    &:after {
+      transform: translate(-50%, 50%) scale(0.95);
+    }
   }
 }

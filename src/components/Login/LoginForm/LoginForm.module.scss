@@ -1,11 +1,14 @@
-.container{
+@import "./../../../index";
+.body{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 110;
 }
 .form {
-  background-color: #91d5bf;
+  background-color: $turquoiseColor;
   padding: 30px;
   border-radius: 15px;
   display: flex;
@@ -38,33 +41,23 @@
 .button {
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: darkcyan;
+  background-color: $lightTurquoiseColor;
+  border: 2px solid $lightTurquoiseColor;
   font-size: 20px;
   letter-spacing: 1.5px;
   transition: all 0.2s ease 0s;
   &:hover{
-    background-color: #3e8a8a;
+    background-color: $darkTurquoiseColor;
+    border: 2px solid $lightTurquoiseColor;
+    color: white;
 
   }
   &:active{
     transform: translate(2px, 2px);
   }
 }
-.buttonOut {
-  color: wheat;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background-color: #692224;
-  font-size: 20px;
-  letter-spacing: 1.5px;
-  transition: all 0.2s ease 0s;
-
-}
 
 
-.authImage{
-  margin-bottom: 50px;
-}
 
 .email {
 }

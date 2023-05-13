@@ -1,7 +1,12 @@
+@import './../../../index';
 
-.container {
-  background-color: #519a83;
-  margin-bottom: 20px;
+.body {
+  grid-area: profile;
+  //background-color: #519a83;
+  //margin-bottom: 15px;
+
+  padding-right: 15px;
+  margin-bottom: 15px;
 }
 
 .banner {
@@ -19,13 +24,8 @@
   }
 }
 
-.content {
-  display: flex;
-  align-items: start;
-  padding: 20px;
-}
-
 .profile {
+  background: $turquoiseColor;
   padding: 10px;
   display: flex;
   //flex-wrap: wrap;
@@ -35,7 +35,10 @@
 
 .avatar {
   position: relative;
-  flex: 0 1 150px;
+  //flex: 0 1 150px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include adaptiveValue("flex-basis", 150, 90, 1)
 }
 
 .image {
@@ -44,6 +47,7 @@
   padding-bottom: 100%;
   border-radius: 50%;
   overflow: hidden;
+  border: 2px solid $lightTurquoiseColor;
 
   img {
     position: absolute;
@@ -60,51 +64,109 @@
   width: 100%;
   padding: 5px;
   border-radius: 5px;
+  background-color: #c8d6ca;
+  border: 1px solid $brownColor;
 }
 
 .info {
   flex: 1 1 auto;
+  letter-spacing: 1.1px;
+}
+
+.header {
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  row-gap: 15px;
+  //justify-content: space-between;
+  @media (max-width: $mobileSmall) {
+   flex-direction: row;
+  }
+
 }
 
 .name {
-  padding-top: 15px;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  margin-bottom: 25px;
+  flex: 1 1 auto;
+  //padding-top: 15px;
+  //font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  @media (max-width: $mobileSmall) {
+    //flex: 0 0 100%;
+    padding-right: 5px;
+  }
+  @include adaptiveValue("font-size", 22, 16, 1)
 }
 
+
+.status{
+
+}
 .button {
-  flex: 0 0 120px;
-  padding: 10px 20px;
+  background-color: $lightTurquoiseColor;
+  color: $brownColor;
+  font-weight: 600;
+  border: 1px solid #5c3d46;
+  padding: 10px 30px 10px 20px;
   font-size: 14px;
   align-self: start;
   border-radius: 5px;
-  padding-right: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  //font-size: 0px;
+  @include adaptiveValue("padding-top", 10, 5, 1);
+  @include adaptiveValue("padding-right", 30, 20, 1);
+  @include adaptiveValue("padding-bottom", 10, 5, 1);
+  @include adaptiveValue("padding-left", 20, 10, 1);
+
+
+  //flex-basis: 130px;
+  @include adaptiveValue("flex-basis", 130, 120, 1);
+  @media (max-width: $mobile) {
+
+  }
 }
-.buttonEdit{
+
+.buttonEdit {
   position: relative;
-  &:after{
+  transition: all 0.3s ease 0s;
+
+  &:after {
     content: "";
     position: absolute;
     height: 18px;
     width: 18px;
     right: 5px;
+    //bottom: 50%;
+    //transform: translate(0px, 50%);
     background: url(./../../../files/images/icons/edit-svgrepo-com.svg) center no-repeat;
     background-size: contain;
   }
+
+  &:hover {
+    &:after {
+      transform: scale(1.2);
+    }
+  }
 }
-.buttonSave{
-  padding: 10px 20px;
+
+.buttonSave {
+
 }
 
 .custom {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  height: 15px;
-  width: 15px;
+  //top: 10px;
+  //left: 10px;
+  height: 28px;
+  width: 28px;
   z-index: 10;
+  background-color: $lightTurquoiseColor;
+  border-radius: 3px;
+  @include adaptiveValue("top", 10, 3, 1);
+  @include adaptiveValue("left", 10, 3, 1);
 }
 
 .customButtonAddPhoto {
@@ -112,17 +174,19 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+
   &::before {
     content: "";
     position: absolute;
     right: 0;
-    height: 28px;
-    width: 28px;
+    height: 26px;
+    width: 26px;
     background: url(./../../../files/images/icons/camera-add-photo-svgrepo-com.svg) center no-repeat;
     background-size: contain;
   }
-  &:hover{
-    &:before{
+
+  &:hover {
+    &:before {
       transform: scale(1.1);
     }
   }

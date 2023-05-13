@@ -1,0 +1,213 @@
+@use "sass:math";
+
+// Підключення шрифтів ===========================================================================================================================================================================================================================================================================
+// @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700");
+
+// Підключити, якщо є локальні файли шрифтів
+@font-face {
+  font-family: Gilroy;
+  font-display: swap;
+  src: url("./fonts/Gilroy-Bold.woff2") format("woff2"), url("./fonts/Gilroy-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gilroy;
+  font-display: swap;
+  src: url("./fonts/Gilroy-Medium.woff2") format("woff2"), url("./fonts/Gilroy-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gilroy;
+  font-display: swap;
+  src: url("./fonts/Gilroy-Regular.woff2") format("woff2"), url("./fonts/Gilroy-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Gilroy;
+  font-display: swap;
+  src: url("./fonts/Gilroy-Semibold.woff2") format("woff2"), url("./fonts/Gilroy-Semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+// За замовчуванням шрифт ==============================================================================================================================================================================================================================================================================
+$fontFamily: "Gilroy";
+$fontSize: 16px; //  - розмір шрифту за замовчуванням з макету
+
+// Основні кольори
+$mainColor: #3a3a3a; // Колір шрифту за замовчуванням\
+$brownColor: #5c3d46;
+$darkTurquoiseColor: #5c866d;
+$turquoiseColor: #99bfaa;
+$grayColor: #c8d6ca;
+$lightTurquoiseColor: #e7f5de;
+
+//Фільтри для SVG
+$whiteFilter: invert(100%) sepia(0%) saturate(5452%) hue-rotate(339deg) brightness(113%) contrast(103%);
+$brownFilter: invert(22%) sepia(3%) saturate(5249%) hue-rotate(292deg) brightness(94%) contrast(81%);
+$darkTurquoiseFilter: invert(51%) sepia(17%) saturate(607%) hue-rotate(91deg) brightness(91%) contrast(93%);
+
+
+//Основні фільтри для SVG
+$orangeFilter: invert(71%) sepia(20%) saturate(1074%) hue-rotate(335deg) brightness(99%) contrast(84%);
+$darkOrangeFilter: invert(65%) sepia(58%) saturate(366%) hue-rotate(337deg) brightness(96%) contrast(90%);
+$grayFilter: invert(59%) sepia(16%) saturate(0%) hue-rotate(177deg) brightness(88%) contrast(93%);
+$whiteFilter: invert(100%) sepia(1%) saturate(1406%) hue-rotate(192deg) brightness(124%) contrast(100%);
+
+// Налаштування адаптивної сітки ===============================================================================================================================================================================================================================================================================================
+
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1440;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1270; //додаємо падінги
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поїнти
+$pc: $containerWidth + px; // ПК, ноутбуки, деякі планшети у горизонтальному положенні
+$tablet: 992px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767px; // Телефоны L
+$mobileSmall: 480px; // Телефоны S
+
+// Обнулення ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: $minWidth + px;
+}
+
+body {
+  color: $mainColor;
+  line-height: 1;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+
+  //text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+button,
+textarea {
+  font-family: $fontFamily;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+// Основні стилі  ============================================================================================================================================================================================================================================================================================================================================================================================
+
+body {
+  overflow-x: hidden;
+  color: $mainColor;
+}
+
+/*
+(i) Стилі будуть застосовуватись до
+всіх класів, що містять *__container
+Наприклад header__container, main__container і т.п.
+
+*/
+[class*="_container"] {
+  overflow: hidden;
+  max-width: $maxWidthContainer + px;
+  padding: 0px 15px;
+  margin: 0 auto;
+}
+
+// [class*="__inner-container"] {
+//    max-width: 1420px;
+//    margin: 0 auto;
+// }
+
+// Mixin =============================================================================================================================================================================
+@function percent($px, $from) {
+  $result: math.div($px, $from) * 100%;
+  @return $result;
+}
+
+@mixin adaptiveValue($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type==1 {
+    //Тільки якщо менше контейнеру
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+  } @else if $type==2 {
+    //Тільки якщобільше контейнеру
+    #{$property}: $startSize + px;
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - $minWidth}));
+    }
+  } @else {
+    //Завжди
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - $minWidth}));
+  }
+}

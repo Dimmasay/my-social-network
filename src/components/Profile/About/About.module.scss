@@ -1,84 +1,62 @@
-.container {
-  padding: 20px;
-  background-color: cadetblue;
-  margin-bottom: 20px;
+@import './../../../index';
+
+.body {
+  grid-area: about;
+  background-color: $lightTurquoiseColor;
+  padding: 15px;
+  margin-bottom: 15px;
+  align-self: start;
+  @media (min-width: $mobile) {
+
+  }
 }
 
 .aboutItem {
   margin-bottom: 30px;
-
 }
 
 .aboutTitle {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
+  padding: 10px 0px;
+  letter-spacing: 1.2px;
   margin-bottom: 10px;
-}
-
-.title {
-  font-weight: 600;
-  font-size: 18px;
+  background-color: $darkTurquoiseColor;
+  color: white;
 }
 
 .aboutText {
   text-align: center;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid $darkTurquoiseColor;
   padding: 10px;
 }
+
+
+.title {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+}
+
 
 .jobItem {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  //column-gap: 10px;
-  margin-bottom: 25px;
-
+  margin-bottom: 20px;
+  @media (max-width: $tablet) {
+    row-gap: 10px;
+    justify-content: center;
+  }
 }
 
-.jobDescrip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 25px;
-}
-.textDescrip{
-  text-align: center;
-  min-width: 100%;
-  border-bottom: 1px solid white;
-  padding: 10px;
-
-  padding-top: 15px;
-}
-.titleContacts {
-  text-align: center;
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.itemContact {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 15px;
-  margin-bottom: 10px;
-  border: 1px solid white;
-  padding: 10px;
-}
-
-.nameContact {
-
-}
-
-.link {
-color: inherit;
-}
-
-.lookingJobYes{
+.lookingJobYes {
   position: relative;
   padding-right: 25px;
-  &:after{
+
+  &:after {
     content: "";
     //filter: invert(100%) sepia(0%) saturate(5452%) hue-rotate(339deg) brightness(113%) contrast(103%); //white filter for svg
     position: absolute;
@@ -91,10 +69,12 @@ color: inherit;
 
   }
 }
-.lookingJobNo{
+
+.lookingJobNo {
   position: relative;
   padding-right: 25px;
-  &:after{
+
+  &:after {
     content: "";
     //filter: invert(100%) sepia(0%) saturate(5452%) hue-rotate(339deg) brightness(113%) contrast(103%); //white filter for svg
     position: absolute;
@@ -106,3 +86,48 @@ color: inherit;
     transform: translate(0px, -30%);
   }
 }
+
+
+.jobDescrip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.textDescrip {
+  min-width: 100%;
+  text-align: center;
+  border-bottom: 3px solid $darkTurquoiseColor;
+  padding: 15px 0px;
+}
+
+
+.titleContacts {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 10px 0px;
+  background-color: $darkTurquoiseColor;
+  color: white;
+}
+
+.itemContact {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+
+  border: 3px solid $darkTurquoiseColor;
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+
+.link {
+  color: inherit;
+}
+

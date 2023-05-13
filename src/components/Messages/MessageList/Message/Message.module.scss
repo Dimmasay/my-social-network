@@ -4,6 +4,8 @@
   flex-direction: row-reverse;
   column-gap: 10px;
   justify-content: end;
+  letter-spacing: 1.2px;
+
 
 
 }
@@ -30,12 +32,19 @@
 
 .text {
   flex: 1 1 auto;
+  align-self: flex-end;
   padding: 10px;
   background-color: rgba(157, 168, 165, 0.61);
   border-radius: 10px 0px 10px 10px;
   font-size: 18px;
   line-height: 150%;
-  text-align: right;
+  text-align: left;
 
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
 
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }

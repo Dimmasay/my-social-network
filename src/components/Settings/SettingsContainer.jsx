@@ -4,25 +4,30 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import style from './SettingsContainer.module.scss'
 import * as Yup from "yup";
 import {Field, Form, Formik} from "formik";
-import React, {useEffect} from "react";
-import {getProfileTC, updateProfileTC} from "../../redux/profileReducer";
+import React, {useEffect, useState} from "react";
+import {getProfileTC, setUpdateAC, updateProfileTC} from "../../redux/profileReducer";
 import Preloader from "../common/Preloader/Preloader";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 const Settings = (props) => {
+
     const navigate = useNavigate()
+
     useEffect(() => {
         props.getProfileTC(props.myId)
+        return () => {
+            props.setUpdateAC(false)
+        }
     }, [])
+
 
     if (!props.profile || props.profile.userId !== props.myId) {
         return (
-            <div className={style.preloader}>
-                <Preloader/>
-            </div>
+            <div className={style.preloader}><Preloader/></div>
         )
     } else {
+
 
         let state = {
             aboutMe: props.profile.aboutMe,
@@ -32,16 +37,12 @@ const Settings = (props) => {
             fullName: props.profile.fullName,
             contacts: {...props.profile.contacts},
         }
-        let sendForm = (state) => {
-            props.updateProfileTC(props.myId, state)
-
-            navigate(`/profile/${props.myId}`)
-
-
+        let sendForm = (state, onSubmitProps) => {
+            props.updateProfileTC(props.myId, state, onSubmitProps.setStatus)
         }
 
-        const validationSchema = Yup.object().shape({
 
+        const validationSchema = Yup.object().shape({
             fullName: Yup.string()
                 .required('Required'),
             aboutMe: Yup.string()
@@ -49,14 +50,24 @@ const Settings = (props) => {
 
         })
 
+        const SuccessUpdate = () => {
+            if (props.isUpdate === true) {
+                setTimeout(() => {
+                    navigate(`/profile/${props.myId}`)
+                }, 1000)
+                return (
+                    <button type="submit" className={style.button}>Saved</button>
+                )
+            }
 
+        }
         return (
             <Formik
                 initialValues={state}
                 onSubmit={sendForm}
                 validationSchema={validationSchema}
             >
-                {({errors, touched,}) => {
+                {({errors, touched, status}) => {
 
                     let errorFullName = touched.fullName && errors.fullName
                     let errorAboutMe = touched.aboutMe && errors.aboutMe
@@ -65,38 +76,37 @@ const Settings = (props) => {
                         <div className={style.container}>
                             <div className={style.titleTitle}>Setting your account</div>
                             <Form className={style.form}>
-                                <div className={style.innerWrapper}>
+                                <div className={style.info}>
                                     <div className={style.titlePersonal}>Personal information</div>
-                                    <div className={style.columnWithError}>
-                                        <div className={style.row}>
-                                            <label className={style.title} htmlFor="fullNameLabel">Name</label>
-                                            <Field
-                                                className={errorFullName ? `${style.input} ${style.inputError}` : style.input}
-                                                name="fullName"
-                                                id='fullNameLabel'/>
-                                        </div>
-                                        {errorFullName ? <div className={style.errorMessage}>{errors.fullName}</div> : null}
-                                    </div>
-                                    <div className={style.columnWithError}>
-                                        <div className={style.row}>
-
-                                            <label className={style.title} htmlFor="aboutMeLabel">About me</label>
-                                            <Field
-                                                className={errorAboutMe ? `${style.input} ${style.inputError}` : style.input}
-                                                name="aboutMe"
-                                                id='aboutMeLabel'/>
-                                        </div>
-                                        {errorAboutMe ? <div className={style.errorMessage}>{errors.aboutMe}</div> : null}
+                                    <div className={style.row}>
+                                        <label className={`${style.title} ${style.titleName}`}
+                                               htmlFor="fullNameLabel">Name</label>
+                                        {errorFullName ?
+                                            <div className={style.errorMessage}>{errors.fullName}</div> :
+                                            <div className={style.errorMessage}></div>}
+                                        <Field
+                                            className={errorFullName ? `${style.input} ${style.inputError}` : style.input}
+                                            name="fullName"
+                                            id='fullNameLabel'/>
                                     </div>
                                     <div className={style.row}>
-                                        <label className={style.title}
+                                        <label className={`${style.title} ${style.titleAbout}`}
+                                               htmlFor="aboutMeLabel">About me</label>
+                                        <div className={style.errorMessage}>{errors.aboutMe}</div>
+                                        <Field
+                                            className={errorAboutMe ? `${style.input} ${style.inputError}` : style.input}
+                                            name="aboutMe"
+                                            id='aboutMeLabel'/>
+                                    </div>
+                                    <div className={style.row}>
+                                        <label className={`${style.title} ${style.titleCheckbox}`}
                                                htmlFor="lookingForAJobLabel">Looking for a job</label>
                                         <Field type='checkbox' className={`${style.input} ${style.inputCheckBox}`}
                                                name="lookingForAJob"
                                                id='lookingForAJobLabel'/>
                                     </div>
                                     <div className={`${style.row} ${style.rowJob}`}>
-                                        <label className={style.title}
+                                        <label className={`${style.title} ${style.titleJob}`}
                                                htmlFor="lookingForAJobDescriptionLabel">Looking for a job
                                             description</label>
                                         <Field
@@ -122,14 +132,21 @@ const Settings = (props) => {
                                         })}
                                     </div>
                                 </div>
-                                <button type="submit" className={style.button}>Save</button>
 
+                                <div className={style.infoBlock}>{props.isUpdate ? null : status}</div>
+                                {
+                                    props.isUpdate
+                                        ? <SuccessUpdate/>
+                                        : <button type="submit" className={style.button}>Save</button>
+                                }
                             </Form>
                         </div>
                     )
                 }}
             </Formik>
         )
+
+
     }
 
 
@@ -137,12 +154,13 @@ const Settings = (props) => {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        isUpdate: state.profilePage.isUpdate,
         myId: state.auth.id
     }
 }
 const SettingsContainer = compose(
     connect(mapStateToProps, {
-        getProfileTC, updateProfileTC
+        getProfileTC, updateProfileTC, setUpdateAC
     }),
     withAuthRedirect
 )(Settings)

@@ -5,12 +5,14 @@ import profileReducer from "./profileReducer";
 import userReducer from "./userReducer";
 import messageReducer from "./messageReducer";
 import authReducer from "./authReducer";
+import appReducer from "./appReducer";
 
 const reducers = combineReducers({
     profilePage: profileReducer,
     usersPage: userReducer,
     messagePage: messageReducer,
-    auth: authReducer
+    auth: authReducer,
+    app: appReducer
 })
 
 

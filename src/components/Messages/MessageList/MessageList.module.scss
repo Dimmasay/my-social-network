@@ -1,4 +1,6 @@
-.container {
+@import './../../../index';
+
+.body {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -6,23 +8,35 @@
 
 .messageContent {
   flex: 1 1 auto;
-  overflow: auto;
   margin-bottom: 10px;
+  overflow: auto;
+
+  //Робимо скролбар невидимим
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
-.messageForm{
-  flex: 0 0 100px;
+.messageContent::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.messageForm {
+  //flex: 0 0 100px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include adaptiveValue("flex-basis", 100, 80, 1);
 }
 
 .infoMessage {
-  font-size: 18px;
+  align-items: center;
+  font-size: 20px;
+  background-color: $turquoiseColor;
+  padding: 20px;
   text-align: center;
-  padding: 15px;
-  background-color: #91d5bf;
+  border-radius: 5px;
 }
 
 .messageList {
-  height: 100%;
-  padding-right: 20px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

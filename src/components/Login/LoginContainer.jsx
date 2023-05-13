@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {useEffect} from "react";
 import LoginForm from "./LoginForm/LoginForm";
 import {logInTC, logOutTC, toIdentifyTC} from "../../redux/authReducer";
+
 const Login = (props) => {
 
     useEffect(() => {
@@ -10,7 +11,8 @@ const Login = (props) => {
     }, [])
 
 
-    return (<div className={style.container}>
+    return (<div className={style.body}>
+
         <LoginForm
             logInTC={props.logInTC}
             logOutTC={props.logOutTC}
