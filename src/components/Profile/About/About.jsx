@@ -6,7 +6,7 @@ const About = (props) => {
     let contacts = Object.keys(props.profile.contacts).map(key => {
         return (<div className={style.itemContact} key={key}>
             <div className={style.nameContact}>{key} :</div>
-            <Link className={style.link}>{
+            <Link className={style.link} to={props.profile.contacts[key]}>{
                 !!props.profile.contacts[key]
                     ? props.profile.contacts[key]
                     : '...'

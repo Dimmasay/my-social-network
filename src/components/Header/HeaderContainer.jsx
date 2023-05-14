@@ -18,34 +18,34 @@ const Header = (props) => {
                 <ul className={style.list}>
                     <li className={style.item}>
                         <NavLink to={`./profile/${props.myId}`} className={setActive}>
-                            My profile
+                           <span>My profile</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
                         <NavLink to='./messages' className={setActive}>
-                            Messages
+                            <span>Messages</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
                         <NavLink to='./users' className={setActive}>
-                            Users
+                            <span>Users</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
                         <NavLink to='./followers' className={setActive}>
-                            Followers
+                            <span>Followers</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
                         <NavLink to='./settings' className={setActive}>
-                            Settings
+                            <span>Settings</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
                         {
 
                         props.isAuth === true
-                        ? <button className={style.buttonOut} onClick={logOut}>Log Out</button>
+                        ? <button className={style.buttonOut} onClick={logOut}><span>Log Out</span></button>
                             :<NavLink to='./login' className={setActive}>
                                 Login
                             </NavLink>

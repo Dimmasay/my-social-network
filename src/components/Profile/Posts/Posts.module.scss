@@ -3,9 +3,8 @@
 .body {
   grid-area: posts;
   padding-right: 15px;
-  @media (min-width: $mobile) {
-    //grid-row: 2/4;
-    //grid-column-start: span 2;
+  @media (max-width: $mobile) {
+    padding-right: 0;
   }
 }
 

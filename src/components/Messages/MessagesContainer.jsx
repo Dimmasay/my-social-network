@@ -11,7 +11,7 @@ import {getProfileTC} from "../../redux/profileReducer";
 
 const AllMessages = (props) => {
 
-    const [isActive, setActive] = useState(false)
+    const [isActiveDialogs, setActive] = useState(false)
 
     useEffect(() => {
         props.getProfileTC(props.myId)
@@ -22,22 +22,17 @@ const AllMessages = (props) => {
     let userIdLatestMessage = props.dialogs.find(dialog => dialog.userId).userId
 
     const activeMode = () => {
-        if (isActive) {
-            setActive(false)
-        } else {
-            setActive(true)
-        }
+        isActiveDialogs ? setActive(false) : setActive(true)
     }
 
     return (
-        <div className={style.container}>
+        <div className={style.body}>
             <div
-                className={isActive ? ` ${style.dialogsColumnActive} ${style.dialogsColumn}` : `${style.dialogsColumn}`}>
+                className={isActiveDialogs ? ` ${style.dialogsColumnActive} ${style.dialogsColumn}` : `${style.dialogsColumn}`}>
                 <Dialogs dialogs={props.dialogs}
                          userIdMessage={userIdMessage}
                          userIdLatestMessage={userIdLatestMessage}
                          activeMode={activeMode}
-
                 />
 
             </div>

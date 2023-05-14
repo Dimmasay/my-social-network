@@ -38,7 +38,7 @@ const Profile = (props) => {
         )
     } else {
         return (
-            <div className={style.container}>
+            <div className={style.mainContainer}>
                 <div className={style.body}>
                         <ProfileInfo
                             myId={props.myId}

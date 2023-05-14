@@ -1,5 +1,5 @@
 import style from './App.module.scss';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -9,19 +9,19 @@ import SettingsContainer from "./components/Settings/SettingsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
 import {initializedAppTC} from "./redux/appReducer";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 
 const App = (props) => {
 
-    useEffect(() => {
+       useEffect(() => {
         props.initializedAppTC()
     }, [])
 
     if (props.initialized) {
         return (
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
-                <div className={style.wrapper}>
+            <HashRouter >
+                <div className={style.wrapper} >
                     <HeaderContainer/>
                     <div className={style.main}>
                         <Routes className={style.main}>
@@ -37,7 +37,7 @@ const App = (props) => {
 
 
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }

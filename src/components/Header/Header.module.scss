@@ -23,6 +23,11 @@
   font-size: 20px;
   color: white;
   padding: 5px 0px;
+  @media (max-width: $mobile) {
+    justify-content: space-between;
+    @include adaptiveValue("column-gap", 70, 20, 1);
+  }
+
 
 }
 
@@ -30,13 +35,68 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 20px;
+  padding: 0px 15px;
   font-weight: 500;
   letter-spacing: 1.3px;
+  position: relative;
 
   &:not(:last-child) {
     border-right: 2px solid white;
   }
+
+  @media (max-width: $mobile) {
+    padding: 0px;
+    @include adaptiveValue("height", 60, 30, 1);
+    @include adaptiveValue("width", 60, 30, 1);
+
+    span {
+      display: none;
+    }
+    a {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      filter: $whiteFilter;
+      &.active {
+        filter: $darkTurquoiseFilter;
+      }
+    }
+    &:not(:last-child) {
+      border-right: none;
+    }
+    &:nth-child(1) {
+      a {
+        background: url(./../../files/images/icons/header/home-svgrepo-com.svg) center no-repeat;
+        background-size: contain;
+      }
+    }
+    &:nth-child(2) {
+      a {
+        background: url(./../../files/images/icons/header/messages-svgrepo-com.svg) center no-repeat;
+        background-size: contain;
+      }
+    }
+    &:nth-child(3) {
+      a {
+        background: url(./../../files/images/icons/header/friend-search-svgrepo-com.svg) center no-repeat;
+        background-size: contain;
+      }
+    }
+    &:nth-child(4) {
+      a {
+        background: url(./../../files/images/icons/header/friend-3-svgrepo-com.svg) center no-repeat;
+        background-size: contain;
+      }
+    }
+    &:nth-child(5) {
+      a {
+        background: url(./../../files/images/icons/header/settings-svgrepo-com.svg) center no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
 }
 
 .link {
@@ -46,17 +106,18 @@
   transition: all 0.5s ease 0s;
 
   &:hover {
-    //box-shadow: 0 5px 10px #0641ad;
   }
 
-
   &.active {
-    //background-color: $lightTurquoiseColor;
     color: $darkTurquoiseColor;
     text-shadow: 0 0 15px white;
   }
 
+  display: flex;
+  align-items: center;
+
 }
+
 
 .buttonOut {
   background-color: $lightTurquoiseColor;
@@ -69,5 +130,18 @@
 
   letter-spacing: 1.5px;
   transition: all 0.2s ease 0s;
+  @media (max-width: $mobile) {
+
+    filter: $whiteFilter;
+    background-color: inherit;
+    border: none;
+    padding: 0px;
+    @include adaptiveValue("height", 60, 30, 1);
+    @include adaptiveValue("width", 60, 30, 1);
+    background: url(./../../files/images/icons/header/logout-svgrepo-com.svg) center no-repeat;
+    background-size: contain;
+  }
+
+
 
 }
