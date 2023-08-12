@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 import style from './Header.module.scss'
 import {connect} from "react-redux";
-import {logOutTC} from "../../redux/authReducer";
+import {logOutTC} from "../../redux/authReducer.ts";
 
 const setActive = (link) => link.isActive ? `${style.link} ${style.active}` : style.link
 

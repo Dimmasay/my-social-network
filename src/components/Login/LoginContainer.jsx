@@ -2,7 +2,7 @@ import style from './LoginContainer.module.scss'
 import {connect} from "react-redux";
 import {useEffect} from "react";
 import LoginForm from "./LoginForm/LoginForm";
-import {logInTC, logOutTC, toIdentifyTC} from "../../redux/authReducer";
+import {logInTC, logOutTC, toIdentifyTC} from "../../redux/authReducer.ts";
 
 const Login = (props) => {
 

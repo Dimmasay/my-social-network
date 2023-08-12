@@ -1,5 +1,5 @@
 import style from './App.module.scss';
-import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -8,8 +8,8 @@ import LoginContainer from "./components/Login/LoginContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
-import {initializedAppTC} from "./redux/appReducer";
-import {useEffect, useState} from "react";
+import {initializedAppTC} from "./redux/appReducer.ts";
+import {useEffect} from "react";
 
 
 const App = (props) => {

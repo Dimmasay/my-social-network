@@ -4,8 +4,8 @@ import thunkMiddleware from "redux-thunk";
 import profileReducer from "./profileReducer";
 import userReducer from "./userReducer";
 import messageReducer from "./messageReducer";
-import authReducer from "./authReducer";
-import appReducer from "./appReducer";
+import authReducer from "./authReducer.ts";
+import appReducer from "./appReducer.ts";
 
 const reducers = combineReducers({
     profilePage: profileReducer,
