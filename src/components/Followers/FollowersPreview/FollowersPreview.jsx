@@ -1,9 +1,9 @@
 import style from './FollowersPreview.module.scss'
 import {useEffect} from "react";
 import {NavLink} from "react-router-dom";
-import {followUserTC, setPrevFriendsTC, unFollowUserTC} from "../../../redux/userReducer";
+import {followUserTC, setPrevFriendsTC, unFollowUserTC} from "../../../redux/userReducer.ts";
 import {connect} from "react-redux";
-import {addDialogAC} from "../../../redux/messageReducer";
+import {addDialogAC} from "../../../redux/messageReducer.ts";
 
 const FollowersPreview = (props) => {
     useEffect(() => {

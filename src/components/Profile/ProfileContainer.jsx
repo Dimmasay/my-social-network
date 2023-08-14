@@ -12,7 +12,7 @@ import {
     likePostAC,
     updateAvatarTC,
     updateStatusTC
-} from "../../redux/profileReducer";
+} from "../../redux/profileReducer.ts";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {useEffect} from "react";

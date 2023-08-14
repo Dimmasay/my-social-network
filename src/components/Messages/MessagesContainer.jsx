@@ -1,13 +1,13 @@
 import style from './MessagesContainer.module.scss'
 import {connect} from "react-redux";
-import {addMessageAC} from "../../redux/messageReducer";
+import {addMessageAC} from "../../redux/messageReducer.ts";
 import Dialogs from "./Dialogs/Dialogs";
 import MessageList from "./MessageList/MessageList";
 import {compose} from "redux";
 import {withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {useEffect, useState} from "react";
-import {getProfileTC} from "../../redux/profileReducer";
+import {getProfileTC} from "../../redux/profileReducer.ts";
 
 const AllMessages = (props) => {
 

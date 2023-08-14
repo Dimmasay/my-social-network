@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk";
-import profileReducer from "./profileReducer";
-import userReducer from "./userReducer";
-import messageReducer from "./messageReducer";
+import profileReducer from "./profileReducer.ts";
+import userReducer from "./userReducer.ts";
+import messageReducer from "./messageReducer.ts";
 import authReducer from "./authReducer.ts";
 import appReducer from "./appReducer.ts";
 

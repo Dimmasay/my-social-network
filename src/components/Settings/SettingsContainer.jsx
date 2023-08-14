@@ -4,10 +4,10 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import style from './SettingsContainer.module.scss'
 import * as Yup from "yup";
 import {Field, Form, Formik} from "formik";
-import React, {useEffect, useState} from "react";
-import {getProfileTC, setUpdateAC, updateProfileTC} from "../../redux/profileReducer";
+import React, {useEffect} from "react";
+import {getProfileTC, setUpdateAC, updateProfileTC} from "../../redux/profileReducer.ts";
 import Preloader from "../common/Preloader/Preloader";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const Settings = (props) => {

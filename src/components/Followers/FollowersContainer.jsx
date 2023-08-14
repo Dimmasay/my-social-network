@@ -1,10 +1,10 @@
 import style from './FollowersContainer.module.scss';
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {followUserTC, setPageAC, setUsersTC, unFollowUserTC} from "../../redux/userReducer";
+import {followUserTC, setPageAC, setUsersTC, unFollowUserTC} from "../../redux/userReducer.ts";
 import Pagination from "../common/Pagination/Pagination";
 import {NavLink} from "react-router-dom";
-import {addDialogAC} from "../../redux/messageReducer";
+import {addDialogAC} from "../../redux/messageReducer.ts";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 

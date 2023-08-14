@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {ProfileType} from "./profileReducer";
 
 const SET_USERS = '.userReducer/SET_USERS'
 const SET_TOTAL_COUNT = '.userReducer/SET_TOTAL_COUNT'
@@ -9,7 +10,18 @@ const IN_FOLLOWING_PROCESS = '.userReducer/IN_FOLLOWING_PROCESS'
 const FOLLOW_USER = '.userReducer/FOLLOW_USER'
 const UNFOLLOW_USER = '.userReducer/UNFOLLOW_USER'
 
-const initialState = {
+
+export type UserInitialStateType = {
+    prevFriends: ProfileType[],
+    quantityPrevFriends: number,
+    users: ProfileType[],
+    page: number,
+    count: number,
+    totalCount: boolean,
+    inFollowingProcess: ProfileType[]
+}
+
+const initialState: UserInitialStateType = {
     prevFriends: [],
     quantityPrevFriends: 3,
     users: [],
@@ -18,7 +30,7 @@ const initialState = {
     totalCount: null,
     inFollowingProcess: []
 }
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action): UserInitialStateType => {
     switch (action.type) {
 
         case SET_USERS:
@@ -54,7 +66,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.id === action.userId) {
+                    if (user.userId === action.userId) {
                         return {...user, followed: true}
 
                     }
@@ -65,7 +77,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.id === action.userId) {
+                    if (user.userId === action.userId) {
                         return {...user, followed: false}
                     }
                     return user
@@ -77,28 +89,64 @@ const userReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const setUsersAC = (users) => ({type: SET_USERS, users})
-export const setPrevFriendsAC = (prevFriends, quantity) => ({type: SET_PREV_FRIENDS, prevFriends, quantity})
-export const setTotalCountAC = (value) => ({type: SET_TOTAL_COUNT, value})
-export const setPageAC = (page) => ({type: SET_PAGE, page})
-export const inFollowingProcessAC = (userId, value) => ({type: IN_FOLLOWING_PROCESS, userId, value})
-export const followUserAC = (userId) => ({type: FOLLOW_USER, userId})
-export const unFollowUserAC = (userId) => ({type: UNFOLLOW_USER, userId})
+type SetUsersActionType = {
+    type: typeof SET_USERS,
+    users: ProfileType[]
+}
+export const setUsersAC = (users: ProfileType[]): SetUsersActionType => ({type: SET_USERS, users})
+
+type SetPrevFriendsActionType = {
+    type: typeof SET_PREV_FRIENDS,
+    prevFriends: ProfileType[],
+    quantity :number
+}
+export const setPrevFriendsAC = (prevFriends: ProfileType[], quantity: number): SetPrevFriendsActionType => ({type: SET_PREV_FRIENDS, prevFriends, quantity})
+
+type SetTotalCountActionType = {
+    type: typeof SET_TOTAL_COUNT,
+    value: number
+}
+export const setTotalCountAC = (value: number): SetTotalCountActionType => ({type: SET_TOTAL_COUNT, value})
+
+type SetPageActionType = {
+    type:typeof SET_PAGE,
+    page: number
+}
+export const setPageAC = (page: number):SetPageActionType => ({type: SET_PAGE, page})
+
+type InFollowingProcessActionType = {
+    type: typeof IN_FOLLOWING_PROCESS,
+    userId: number,
+    value: boolean
+}
+export const inFollowingProcessAC = (userId: number, value: boolean):InFollowingProcessActionType => ({type: IN_FOLLOWING_PROCESS, userId, value})
+
+type FollowUserActionType = {
+    type: typeof FOLLOW_USER,
+    userId: number
+}
+export const followUserAC = (userId: number): FollowUserActionType => ({type: FOLLOW_USER, userId})
+
+type UnFollowUserActonType = {
+    type: typeof UNFOLLOW_USER,
+    userId: number
+}
+export const unFollowUserAC = (userId: number): UnFollowUserActonType => ({type: UNFOLLOW_USER, userId})
 
 //Thunk Creators
-export const setUsersTC = (page, count, friend) => async (dispatch) => {
+export const setUsersTC = (page: number, count: number, friend: boolean) => async (dispatch: any) => {
 
     let data = await usersAPI.getUsers(page, count, friend)
     dispatch(setUsersAC(data.items))
     dispatch(setTotalCountAC(data.totalCount))
 
 }
-export const setPrevFriendsTC = (page, count, friend = true) => async (dispatch) => {
+export const setPrevFriendsTC = (page: number, count: number, friend:boolean = true) => async (dispatch:any) => {
     let data = await usersAPI.getUsers(page, count, friend)
     dispatch(setPrevFriendsAC(data.items, count))
 
 }
-export const followUserTC = (userId) => async (dispatch) => {
+export const followUserTC = (userId: number) => async (dispatch: any) => {
     dispatch(inFollowingProcessAC(userId, true))
     let response = await usersAPI.followUser(userId)
     response.data.resultCode === 0 &&
@@ -106,7 +154,7 @@ export const followUserTC = (userId) => async (dispatch) => {
     dispatch(inFollowingProcessAC(userId, false))
 
 }
-export const unFollowUserTC = (userId) => async (dispatch) => {
+export const unFollowUserTC = (userId: number) => async (dispatch: any) => {
     dispatch(inFollowingProcessAC(userId, true))
     let response = await usersAPI.unFollowUser(userId)
     response.data.resultCode === 0 &&

@@ -7,7 +7,53 @@ const SET_STATUS = '.profileReducer/SET_STATUS'
 const LIKE_POST = '.profileReducer/LIKE_POST'
 const UPDATE_IS_SUCCESS = '.profileReducer/UPDATE_IS_SUCCESS'
 
-const initialState = {
+
+// enum ProfileActionType {
+//     ADD_POST = '.profileReducer/ADD_POST',
+//     SET_PROFILE = '.profileReducer/SET_PROFILE',
+//     SET_STATUS = '.profileReducer/SET_STATUS',
+//     LIKE_POST = '.profileReducer/LIKE_POST',
+//     UPDATE_IS_SUCCESS = '.profileReducer/UPDATE_IS_SUCCESS',
+// }
+
+type PostType = {
+    id: number,
+    text: string,
+    likes: number
+}
+type ProfileContactsType = {
+    facebook: string | null,
+    website: string | null,
+    vk: string | null,
+    twitter: string | null,
+    instagram: string | null,
+    youtube: string | null,
+    github: string | null,
+    mainLink: string | null
+}
+type ProfilePhotosType = {
+    small: string | null,
+    large: string | null
+}
+export type ProfileType = {
+    aboutMe: string | null,
+    contacts: ProfileContactsType,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string | null,
+    fullName: string,
+    userId: number,
+    photos: ProfilePhotosType
+}
+
+export type InitialStateType = {
+    isUpdate: boolean,
+    status: string,
+    profile: ProfileType,
+    posts: PostType []
+}
+
+
+const initialState: InitialStateType = {
     isUpdate: false,
     status: '',
     profile: null,
@@ -29,7 +75,7 @@ const initialState = {
         }
     ],
 }
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action): InitialStateType => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -72,23 +118,47 @@ const profileReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const addPostAC = (post) => ({type: ADD_POST, post})
-export const likePostAC = (idPost) => ({type: LIKE_POST, idPost})
-export const setProfileAC = (profile) => ({type: SET_PROFILE, profile})
-export const setStatusAC = (status) => ({type: SET_STATUS, status})
-export const setUpdateAC = (value) => ({type: UPDATE_IS_SUCCESS, value})
+type AddPostActionType = {
+    type: typeof ADD_POST,
+    post: string
+}
+export const addPostAC = (post: string): AddPostActionType => ({type: ADD_POST, post})
+
+type LikePostActionType = {
+    type: typeof LIKE_POST,
+    idPost: number
+}
+export const likePostAC = (idPost: number): LikePostActionType => ({type: LIKE_POST, idPost})
+
+type SetProfileActionType = {
+    type: typeof SET_PROFILE,
+    profile: ProfileType
+}
+export const setProfileAC = (profile: ProfileType): SetProfileActionType => ({type: SET_PROFILE, profile})
+
+type SetStatusActionType = {
+    type: typeof SET_STATUS,
+    status: string
+}
+export const setStatusAC = (status: string): SetStatusActionType => ({type: SET_STATUS, status})
+
+type SetUpdateActionType = {
+    type: typeof UPDATE_IS_SUCCESS,
+    value: boolean
+}
+export const setUpdateAC = (value: boolean): SetUpdateActionType => ({type: UPDATE_IS_SUCCESS, value})
 
 
 //Thunk Creators
-export const getProfileTC = (userId) => async (dispatch) => {
+export const getProfileTC = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getUserProfile(userId)
     dispatch(setProfileAC(response.data))
 }
-export const getStatusTC = (userId) => async (dispatch) => {
+export const getStatusTC = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setStatusAC(response.data))
 }
-export const updateProfileTC = (myId, profile, setStatus) => async (dispatch) => {
+export const updateProfileTC = (myId: number, profile: ProfileType, setStatus: any) => async (dispatch: any) => {
     let response = await profileAPI.updateProfile(profile)
 
     if (response.data.resultCode === 0) {
@@ -99,13 +169,13 @@ export const updateProfileTC = (myId, profile, setStatus) => async (dispatch) =>
         dispatch(setUpdateAC(false))
     }
 }
-export const updateStatusTC = (myId, status) => async (dispatch) => {
+export const updateStatusTC = (myId: number, status: any) => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(getStatusTC(myId))
     }
 }
-export const updateAvatarTC = (myId, photo) => async (dispatch) => {
+export const updateAvatarTC = (myId: number, photo: any) => async (dispatch: any) => {
     let response = await profileAPI.updateAvatar(photo)
     if (response.data.resultCode === 0) {
         dispatch(getProfileTC(myId))
