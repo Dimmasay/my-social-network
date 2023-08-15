@@ -2,16 +2,27 @@ import * as Yup from "yup";
 import {Field, Form, Formik} from "formik";
 import style from "./MessageForm.module.scss";
 
-const MessageForm = (props) => {
+type MessagePropsType = {
+    userIdMessage: number
+    addMessageAC: (id: number, message: string) => void
+}
 
-    let state = {
+
+const MessageForm = (props:MessagePropsType) => {
+
+    type StateType = {
+        message: string
+    }
+
+    let state: StateType = {
         message: '',
     }
 
-    let addMessage = (state) => {
+    let addMessage = (state: StateType) => {
         props.addMessageAC(props.userIdMessage, state.message);
         state.message = '';
     }
+
 
 
     const validationSchema = Yup.object().shape({
@@ -44,4 +55,4 @@ const MessageForm = (props) => {
     )
 }
 
-    export default MessageForm
+export default MessageForm

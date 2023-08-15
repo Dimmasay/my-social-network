@@ -5,12 +5,25 @@ import style from './SettingsContainer.module.scss'
 import * as Yup from "yup";
 import {Field, Form, Formik} from "formik";
 import React, {useEffect} from "react";
-import {getProfileTC, setUpdateAC, updateProfileTC} from "../../redux/profileReducer.ts";
+import {getProfileTC, PostType, ProfileType, setUpdateAC, updateProfileTC} from "../../redux/profileReducer.ts";
 import Preloader from "../common/Preloader/Preloader";
 import {useNavigate} from "react-router-dom";
+import {AppStateType} from "../../redux/redux";
 
+type MapStateType = {
+    profile: ProfileType,
+    isUpdate: boolean,
+    myId: number
+}
+type MapDispatchType = {
+    getProfileTC: (id: number) => void,
+    updateProfileTC: (id: number, state: any, onSubmitProps: any) => void,
+    setUpdateAC: (value: boolean) => void,
+}
+type OwnType = {}
+type SettingsPropsType = MapStateType & MapDispatchType & OwnType
 
-const Settings = (props) => {
+const Settings = (props: SettingsPropsType) => {
 
     const navigate = useNavigate()
 
@@ -24,7 +37,7 @@ const Settings = (props) => {
 
     if (!props.profile || props.profile.userId !== props.myId) {
         return (
-            <div className={style.preloader}><Preloader/></div>
+            <div className={style}><Preloader/></div>
         )
     } else {
 
@@ -151,15 +164,16 @@ const Settings = (props) => {
 
 
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         profile: state.profilePage.profile,
         isUpdate: state.profilePage.isUpdate,
         myId: state.auth.id
     }
 }
+type ConnectType = MapStateType & MapDispatchType & OwnType & AppStateType
 const SettingsContainer = compose(
-    connect(mapStateToProps, {
+    connect<ConnectType>(mapStateToProps, {
         getProfileTC, updateProfileTC, setUpdateAC
     }),
     withAuthRedirect

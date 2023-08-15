@@ -1,7 +1,16 @@
 import style from './Posts.module.scss'
-import PostForm from "./PostForm/PostForm";
+import PostForm from "./PostForm/PostForm.tsx";
+import {PostType, ProfilePhotosType} from "../../../redux/profileReducer";
 
-const Posts = (props) => {
+type PostsType = {
+    addPostAC: (post: string)=> void,
+    likePostAC: (idPost: number) => void,
+    posts: PostType[],
+    photo: ProfilePhotosType,
+    fullName: string,
+}
+
+const Posts = (props: PostsType) => {
     let postArray = props.posts.map((post, key) => {
         const likePost = () => {
             props.likePostAC(post.id)
@@ -11,7 +20,7 @@ const Posts = (props) => {
             <li className={style.item} key={key}>
                 <div className={style.header}>
                     <div className={style.photo}>
-                        <img src={props.photo}/>
+                        <img src={props.photo.small}/>
                     </div>
                     <div className={style.name}>{props.fullName}</div>
                     <div className={style.likes}>Likes: {post.likes}</div>
@@ -26,7 +35,7 @@ const Posts = (props) => {
 
     return (
         <div className={style.body}>
-            <PostForm addPostAC={props.addPostAC} photo={props.photo}/>
+            <PostForm addPostAC={props.addPostAC} photo={props.photo.small}/>
             <div className={style.postsList}>
                 <h2 className={style.title}>My Posts</h2>
                 <ul className={style.list}>

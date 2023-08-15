@@ -1,15 +1,17 @@
 import style from './App.module.scss';
 import {HashRouter, Route, Routes} from "react-router-dom";
-import MessagesContainer from "./components/Messages/MessagesContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import FollowersContainer from "./components/Followers/FollowersContainer";
-import LoginContainer from "./components/Login/LoginContainer";
-import SettingsContainer from "./components/Settings/SettingsContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import MessagesContainer from "./components/Messages/MessagesContainer.tsx";
+import UsersContainer from "./components/Users/UsersContainer.tsx";
+import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
+import FollowersContainer from "./components/Followers/FollowersContainer.tsx";
+import LoginContainer from "./components/Login/LoginContainer.tsx";
+import SettingsContainer from "./components/Settings/SettingsContainer.tsx";
+import HeaderContainer from "./components/Header/HeaderContainer.tsx";
 import {connect} from "react-redux";
 import {initializedAppTC} from "./redux/appReducer.ts";
 import {useEffect} from "react";
+
+
 
 
 const App = (props) => {

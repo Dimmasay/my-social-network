@@ -1,11 +1,16 @@
 import style from './About.module.scss'
 import {Link} from "react-router-dom";
+import {ProfileType} from "../../../redux/profileReducer";
 
-const About = (props) => {
+type AboutType = {
+    profile: ProfileType
+}
+
+const About = (props: AboutType) => {
 
     let contacts = Object.keys(props.profile.contacts).map(key => {
         return (<div className={style.itemContact} key={key}>
-            <div className={style.nameContact}>{key} :</div>
+            <div className={style}>{key} :</div>
             <Link className={style.link} to={props.profile.contacts[key]}>{
                 !!props.profile.contacts[key]
                     ? props.profile.contacts[key]

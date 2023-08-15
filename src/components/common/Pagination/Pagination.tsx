@@ -1,14 +1,27 @@
 import style from './Pagination.module.scss'
 import {useEffect, useState} from "react";
+import {ProfileType} from "../../../redux/profileReducer";
 
 
-const Pagination = (props) => {
+type PaginationPropsType = {
+    count: number,
+    followUserTC: () => any,
+    inFollowingProcess: ProfileType[]
+    page: number
+    setPageAC: (pageNumber : number) => any
+    setUsersTC: () => any
+    totalCount: number
+    unFollowUserTC: () => any
+    users: []
+}
+
+const Pagination: React.FC<PaginationPropsType> = (props) => {
 
 
     //totalCount is value all Users
     //count is value users on page
 
-    const [portionNumber, setPortionNumber] = useState(1)
+    const [portionNumber, setPortionNumber] = useState<number>(1)
 
     const totalPages = Math.ceil(props.totalCount / props.count)
     const portionSize = 10
@@ -17,7 +30,7 @@ const Pagination = (props) => {
     const rightLimitNumber = portionNumber * portionSize
 
 
-    const arrayNumbers = []
+    const arrayNumbers: Array<number> = []
     for (let p = 1; p <= totalPages; ++p) {
         arrayNumbers.push(p)
     }
@@ -25,8 +38,6 @@ const Pagination = (props) => {
     useEffect(() => {
         props.setPageAC(leftLimitNumber)
     }, [portionNumber])
-
-
 
 
     const arrayPageNumbers = arrayNumbers
@@ -104,7 +115,7 @@ const Pagination = (props) => {
                 </button>
                 <button className={`${style.button} ${style.buttonPortionNext}`}
                         onClick={setNextPortion}
-                        disabled={ rightLimitNumber + portionSize > totalPages && true}
+                        disabled={rightLimitNumber + portionSize > totalPages && true}
                 >Next {portionSize}
                 </button>
             </div>

@@ -1,15 +1,35 @@
 import style from './MessagesContainer.module.scss'
 import {connect} from "react-redux";
-import {addMessageAC} from "../../redux/messageReducer.ts";
-import Dialogs from "./Dialogs/Dialogs";
-import MessageList from "./MessageList/MessageList";
+import {addMessageAC, DialogType} from "../../redux/messageReducer.ts";
+import Dialogs from "./Dialogs/Dialogs.tsx";
+import MessageList from "./MessageList/MessageList.tsx";
 import {compose} from "redux";
 import {withRouter} from "../../hoc/withRouter";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {useEffect, useState} from "react";
-import {getProfileTC} from "../../redux/profileReducer.ts";
+import {getProfileTC, ProfileType} from "../../redux/profileReducer.ts";
+import {AppStateType} from "../../redux/redux";
 
-const AllMessages = (props) => {
+
+
+type MapStateType = {
+    dialogs: DialogType[]
+    match: {
+        userId: string
+    }
+    myId: number
+    profile: ProfileType
+}
+type MapDispatchType = {
+    addMessageAC: ()=> void
+    getProfileTC: (id: number) => void
+}
+type OwnType = {}
+
+type AllMessagesPropsType = MapStateType & MapDispatchType & OwnType
+
+const AllMessages = (props: AllMessagesPropsType) => {
+
 
     const [isActiveDialogs, setActive] = useState(false)
 
@@ -21,7 +41,7 @@ const AllMessages = (props) => {
 
     let userIdLatestMessage = props.dialogs.find(dialog => dialog.userId).userId
 
-    const activeMode = () => {
+    const activeMode = (): void => {
         isActiveDialogs ? setActive(false) : setActive(true)
     }
 
@@ -43,7 +63,6 @@ const AllMessages = (props) => {
                             userIdLatestMessage={userIdLatestMessage}
                             userIdMessage={userIdMessage}
                             dialogs={props.dialogs}
-                            currentDialogs={props.currentDialogs}
                             addMessageAC={props.addMessageAC}
                             profile={props.profile}
                         />
@@ -55,18 +74,20 @@ const AllMessages = (props) => {
         </div>
     )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         dialogs: state.messagePage.dialogs,
-        currentDialogs: state.messagePage.currentDialogs,
         myId: state.auth.id,
         profile: state.profilePage.profile,
     }
 }
+
+type ConnectType = MapStateType & MapDispatchType & OwnType & AppStateType
+
 const MessagesContainer = compose(
-    connect(mapStateToProps, {
+    connect<ConnectType>(mapStateToProps, {
         addMessageAC,
-        getProfileTC
+        getProfileTC,
     }),
     withRouter,
     withAuthRedirect

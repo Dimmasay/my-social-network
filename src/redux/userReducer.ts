@@ -11,14 +11,28 @@ const FOLLOW_USER = '.userReducer/FOLLOW_USER'
 const UNFOLLOW_USER = '.userReducer/UNFOLLOW_USER'
 
 
+type UserPhotosType = {
+    small: string | null,
+    large: string | null
+}
+export type UserType = {
+    name: string,
+    id: number,
+    uniqueUrlName: string | null,
+    photos: UserPhotosType,
+    status: string | null,
+    followed: boolean
+}
+
 export type UserInitialStateType = {
-    prevFriends: ProfileType[],
+    prevFriends: UserType[],
     quantityPrevFriends: number,
-    users: ProfileType[],
+    users: UserType[],
     page: number,
     count: number,
     totalCount: boolean,
-    inFollowingProcess: ProfileType[]
+    inFollowingProcess: number[]
+
 }
 
 const initialState: UserInitialStateType = {
@@ -31,6 +45,7 @@ const initialState: UserInitialStateType = {
     inFollowingProcess: []
 }
 const userReducer = (state = initialState, action): UserInitialStateType => {
+
     switch (action.type) {
 
         case SET_USERS:
@@ -66,7 +81,7 @@ const userReducer = (state = initialState, action): UserInitialStateType => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.userId === action.userId) {
+                    if (user.id === action.userId) {
                         return {...user, followed: true}
 
                     }
@@ -77,7 +92,7 @@ const userReducer = (state = initialState, action): UserInitialStateType => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.userId === action.userId) {
+                    if (user.id === action.userId) {
                         return {...user, followed: false}
                     }
                     return user

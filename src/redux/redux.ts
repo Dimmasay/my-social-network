@@ -7,7 +7,7 @@ import messageReducer from "./messageReducer.ts";
 import authReducer from "./authReducer.ts";
 import appReducer from "./appReducer.ts";
 
-const reducers = combineReducers({
+const Reducer = combineReducers({
     profilePage: profileReducer,
     usersPage: userReducer,
     messagePage: messageReducer,
@@ -17,13 +17,17 @@ const reducers = combineReducers({
 
 
 
+export type AppStateType = ReturnType<typeof Reducer>  //ReturnType<Type>  //робимо типізацію загального "Reducer", зі значення що повертає "Reducer" як функція
+
+
+
 
 const store = legacy_createStore(
-    reducers,
+    Reducer,
     composeWithDevTools(
         applyMiddleware(thunkMiddleware)
     )
 );
 
-window.store = store
+// window.store = store
 export default store

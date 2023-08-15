@@ -16,7 +16,7 @@ const UPDATE_IS_SUCCESS = '.profileReducer/UPDATE_IS_SUCCESS'
 //     UPDATE_IS_SUCCESS = '.profileReducer/UPDATE_IS_SUCCESS',
 // }
 
-type PostType = {
+export type PostType = {
     id: number,
     text: string,
     likes: number
@@ -31,7 +31,7 @@ type ProfileContactsType = {
     github: string | null,
     mainLink: string | null
 }
-type ProfilePhotosType = {
+export type ProfilePhotosType = {
     small: string | null,
     large: string | null
 }
@@ -42,7 +42,9 @@ export type ProfileType = {
     lookingForAJobDescription: string | null,
     fullName: string,
     userId: number,
-    photos: ProfilePhotosType
+    photos: ProfilePhotosType,
+
+    followed?: boolean //value for toggle disable button
 }
 
 export type InitialStateType = {

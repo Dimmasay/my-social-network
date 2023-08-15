@@ -1,9 +1,20 @@
 import style from './Dialogs.module.scss'
-import Dialog from "./Dialog/Dialog";
+import Dialog from "./Dialog/Dialog.tsx";
 
-const Dialogs = (props) => {
+
+
+type DialogsPropsType = {
+    dialogs: object[],
+    userIdMessage: number,
+    userIdLatestMessage: number,
+    activeMode: () => void,
+}
+
+
+const Dialogs = (props: DialogsPropsType) => {
 
     let dialogList = props.dialogs.map(dialog => {
+
         return (
             <Dialog
                 userId={dialog.userId}

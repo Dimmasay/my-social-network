@@ -2,15 +2,28 @@ import {NavLink} from "react-router-dom";
 import style from './Header.module.scss'
 import {connect} from "react-redux";
 import {logOutTC} from "../../redux/authReducer.ts";
+import {AppStateType} from "../../redux/redux";
 
 const setActive = (link) => link.isActive ? `${style.link} ${style.active}` : style.link
 
-const Header = (props) => {
+type MapStateType = {
+    myId: number,
+    isAuth: boolean
+}
+
+type MapDispatchType = {
+    logOutTC: () => void
+}
+
+type OwnType = {}
+
+export type HeaderPropsType = MapStateType & MapDispatchType & OwnType
+
+const Header = (props: HeaderPropsType) => {
 
     let logOut = () => {
         props.logOutTC()
     }
-
 
     return (
         <div className={style.header}>
@@ -18,7 +31,7 @@ const Header = (props) => {
                 <ul className={style.list}>
                     <li className={style.item}>
                         <NavLink to={`./profile/${props.myId}`} className={setActive}>
-                           <span>My profile</span>
+                            <span>My profile</span>
                         </NavLink>
                     </li>
                     <li className={style.item}>
@@ -44,11 +57,11 @@ const Header = (props) => {
                     <li className={style.item}>
                         {
 
-                        props.isAuth === true
-                        ? <button className={style.buttonOut} onClick={logOut}><span>Log Out</span></button>
-                            :<NavLink to='./login' className={setActive}>
-                                Login
-                            </NavLink>
+                            props.isAuth === true
+                                ? <button className={style.buttonOut} onClick={logOut}><span>Log Out</span></button>
+                                : <NavLink to='./login' className={setActive}>
+                                    Login
+                                </NavLink>
                         }
                     </li>
                 </ul>
@@ -56,11 +69,11 @@ const Header = (props) => {
         </div>
     )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         myId: state.auth.id,
         isAuth: state.auth.isAuth
     }
 }
-const HeaderContainer = connect(mapStateToProps, {logOutTC})(Header)
+const HeaderContainer = connect<MapStateType, MapDispatchType, OwnType, AppStateType>(mapStateToProps, {logOutTC})(Header)
 export default HeaderContainer

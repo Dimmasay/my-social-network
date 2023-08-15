@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1c2cf047-c69e-4b3e-95be-e31365acf1fa" name="Changes" comment="transition from js to ts, components is ready">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/my-social-network.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/files/images/nature.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Followers/FollowersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Followers/FollowersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Followers/FollowersPreview/FollowersPreview.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Followers/FollowersPreview/FollowersPreview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Dialogs/Dialog/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Dialogs/Dialog/Dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Dialogs/Dialogs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/MessageForm/MessageForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/MessageForm/MessageForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/MessageList/Message/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/MessageList/Message/Message.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/MessageList/MessageList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/MessageList/MessageList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/MessagesContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/MessagesContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/About/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/About/About.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Posts/PostForm/PostForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Posts/PostForm/PostForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Posts/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Posts/Posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/SettingsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/SettingsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/UsersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/UsersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Pagination/Pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/messageReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/messageReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/profileReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profileReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/redux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/userReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/userReducer.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TqwcD5pUiIPeSu4YaTK1IrSf4X" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1/Desktop/Practice&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\1\\Desktop\\my-social-network\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c2cf047-c69e-4b3e-95be-e31365acf1fa" name="Changes" comment="" />
+      <created>1691783996730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691783996730</updated>
+      <workItem from="1691783999353" duration="12630000" />
+      <workItem from="1691797985234" duration="324000" />
+      <workItem from="1691798338445" duration="2052000" />
+      <workItem from="1691800459808" duration="3214000" />
+      <workItem from="1692022173601" duration="15346000" />
+      <workItem from="1692106830862" duration="8817000" />
+    </task>
+    <task id="LOCAL-00001" summary="begin transition from js to ts, changes in redux">
+      <created>1691802973397</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691802973397</updated>
+    </task>
+    <task id="LOCAL-00002" summary="transition from js to ts, redux is ready">
+      <created>1692025663943</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692025663943</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="begin transition from js to ts, changes in redux" />
+    <MESSAGE value="transition from js to ts, redux is ready" />
+    <MESSAGE value="transition from js to ts, components is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="transition from js to ts, components is ready" />
+  </component>
+</project>

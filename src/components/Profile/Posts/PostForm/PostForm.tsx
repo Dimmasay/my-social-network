@@ -2,12 +2,21 @@ import style from './PostForm.module.scss'
 import {Field, Form, Formik} from "formik";
 import * as Yup from 'yup';
 
-const PostForm = (props) => {
-    let state = {
+type PostFormPropsType = {
+    addPostAC: (post: string) => void
+    photo: string
+}
+
+const PostForm = (props: PostFormPropsType) => {
+    type StateType = {
+        postBody: string
+    }
+
+    let state: StateType = {
         postBody: '',
     }
 
-    let addPost = (state) => {
+    let addPost = (state: StateType) => {
         props.addPostAC(state.postBody);
         state.postBody = '';
     }

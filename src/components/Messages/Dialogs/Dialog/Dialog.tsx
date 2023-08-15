@@ -1,11 +1,21 @@
 import style from './Dialog.module.scss'
 import {NavLink} from "react-router-dom";
 
-const Dialog = (props) => {
 
+type DialogPropsType = {
+    userId: number,
+    key: number,
+    photo: string,
+    userName: string,
+    userIdMessage: number,
+    userIdLatestMessage: number,
+    activeMode: () => void,
+}
+
+const Dialog = (props: DialogPropsType) => {
 
     return (
-        <li className={props.userId === (props.userIdMessage) ? `${style.activeItem} ${style.item}` :`${style.item}`}>
+        <li className={props.userId === (props.userIdMessage) ? `${style.activeItem} ${style.item}` : `${style.item}`}>
             <NavLink to={`/messages/${props.userId}`} className={style.link} onClick={props.activeMode}>
                 <div className={style.avatar}>
                     <img src={

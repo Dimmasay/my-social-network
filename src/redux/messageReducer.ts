@@ -10,24 +10,24 @@ enum ActionType {
 }
 
 
-type DialogType = {
+export type DialogType = {
     userName: string | null,
     photo: string | null,
     messages: string[],
     userId: number
 }
 export type InitialStateType = {
-    dialogs: DialogType[]
+    dialogs: DialogType[],
 }
 
 
 const initialState: InitialStateType = {
     dialogs: [
-        {userName: 'Dima', photo: null, messages: ['Hello, I`m fine', 'Yes'], userId: 9},
-        {userName: 'Tanya', photo: null, messages: ['Abrakadabra', 'no'], userId: 5},
+        {userName: 'Dima', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU', messages: ['Hello, I`m fine', 'Yes'], userId: 9},
+        {userName: 'Tanya', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU', messages: ['Abrakadabra', 'no'], userId: 5},
         {
             userName: 'Larisa',
-            photo: null,
+            photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1r6JLzg7t4O9HLayeMjzvfQ9sSX3xnlbeTg&usqp=CAU',
             messages: ['Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello', 'Hello', 'Happy Birthday', 'Hello', 'Happy Birthday', 'Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello '],
             userId: 7
         },

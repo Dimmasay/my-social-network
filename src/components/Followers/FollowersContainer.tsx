@@ -1,15 +1,39 @@
 import style from './FollowersContainer.module.scss';
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {followUserTC, setPageAC, setUsersTC, unFollowUserTC} from "../../redux/userReducer.ts";
-import Pagination from "../common/Pagination/Pagination";
+import {followUserTC, setPageAC, setUsersTC, unFollowUserTC, UserType} from "../../redux/userReducer.ts";
+import Pagination from "../common/Pagination/Pagination.tsx";
 import {NavLink} from "react-router-dom";
 import {addDialogAC} from "../../redux/messageReducer.ts";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {AppStateType} from "../../redux/redux";
+
+type MapStateFollowersType = {
+    users: UserType[],
+    page: number,
+    count: number,
+    totalCount: number,
+    inFollowingProcess: number[],
+}
+
+type MapDispatchFollowersType = {
+    addDialogAC: (userId: number, fullName: string, photo: string) => void,
+    followUserTC: (userId: number) => void,
+    //setPageAC: () => void,
+    setUsersTC: (pageNumber: number, countNumber: number, isFriend: boolean) => void,
+    unFollowUserTC: (userId: number) => void,
+}
+
+type OwnFollowersType = {  //сюди передаємо типізацію пропсів які передаються через атрибути
+
+}
+
+type FollowersPropsType = MapStateFollowersType & MapDispatchFollowersType & OwnFollowersType // загальні пропси
 
 
-const Followers = (props) => {
+
+const Followers: React.FC<FollowersPropsType> = (props) => {
 
 
     useEffect(() => {
@@ -20,7 +44,7 @@ const Followers = (props) => {
     let arrayFollowers = props.users.map(user => {
 
         return (
-            <li className={style.item} key={user.id}>
+            <li key={user.id}>
                 <div className={style.itemBody}>
                     <NavLink to={`/profile/${user.id}`} className={style.itemAvatar}>
                         <img
@@ -29,13 +53,13 @@ const Followers = (props) => {
                     <div className={style.name}>{user.name}</div>
                     {user.followed
                         ? <button
-                            disabled={props.inFollowingProcess.includes(user.id)}
+                            disabled={props.inFollowingProcess.some((element: number) => element === user.id)}
                             onClick={() => {
                                 props.unFollowUserTC(user.id)
                             }}
                             className={`${style.button} ${style.buttonUnFollow}`}>Unfollow</button>
                         : <button
-                            disabled={props.inFollowingProcess.includes(user.id)}
+                            disabled={props.inFollowingProcess.some((element: number) => element === user.id)}
                             onClick={() => {
                                 props.followUserTC(user.id)
                             }}
@@ -64,7 +88,7 @@ const Followers = (props) => {
         </div>
     )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         users: state.usersPage.users,
         page: state.usersPage.page,
@@ -74,7 +98,9 @@ const mapStateToProps = (state) => {
     }
 }
 const FollowersContainer = compose(
-    connect(mapStateToProps, {
+    //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState> - типізуємо connect
+
+    connect<MapStateFollowersType, MapDispatchFollowersType, OwnFollowersType, AppStateType>(mapStateToProps, {
         followUserTC,
         unFollowUserTC,
         setUsersTC,

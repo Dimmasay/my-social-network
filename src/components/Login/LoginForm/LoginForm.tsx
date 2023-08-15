@@ -4,8 +4,24 @@ import style from './LoginForm.module.scss'
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import Preloader from "../../common/Preloader/Preloader";
+import {UserType} from "../../../redux/userReducer";
 
-const LoginForm = (props) => {
+
+type LoginStateType = {
+    email: string,
+    password: string,
+    rememberMe: boolean
+}
+
+type LoginFormType = {
+    isAuth: boolean,
+    myId: number | null
+    logInTC: (state: LoginStateType) => void,
+    logOutTC: () => void,
+}
+
+const LoginForm = (props : LoginFormType) => {
+
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -47,7 +63,7 @@ const LoginForm = (props) => {
                 return (
                     <div className={style.body}>
                         {props.isAuth
-                            ? <div className={style.authImage}>
+                            ? <div className={style}>
                                 <Preloader/>
                             </div>
                             : <Form>
