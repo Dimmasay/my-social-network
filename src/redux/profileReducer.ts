@@ -1,4 +1,6 @@
-import {profileAPI} from "../api/api";
+import {profileAPI} from "../api/api.ts";
+import {Dispatch} from "react";
+import {AppStateType} from "./redux";
 // import {toIdentifyAC} from "./authReducer";
 
 const ADD_POST = '.profileReducer/ADD_POST'
@@ -77,7 +79,13 @@ const initialState: InitialStateType = {
         }
     ],
 }
-const profileReducer = (state = initialState, action): InitialStateType => {
+
+
+type ActionsTypes = AddPostActionType | LikePostActionType |
+    SetProfileActionType | SetStatusActionType |
+    SetUpdateActionType
+
+const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -151,19 +159,22 @@ type SetUpdateActionType = {
 export const setUpdateAC = (value: boolean): SetUpdateActionType => ({type: UPDATE_IS_SUCCESS, value})
 
 
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+
 //Thunk Creators
-export const getProfileTC = (userId: number) => async (dispatch: any) => {
+export const getProfileTC = (userId: number) => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await profileAPI.getUserProfile(userId)
     dispatch(setProfileAC(response.data))
 }
-export const getStatusTC = (userId: number) => async (dispatch: any) => {
+export const getStatusTC = (userId: number) => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await profileAPI.getStatus(userId)
-    dispatch(setStatusAC(response.data))
+    dispatch(setStatusAC(response))
 }
-export const updateProfileTC = (myId: number, profile: ProfileType, setStatus: any) => async (dispatch: any) => {
+export const updateProfileTC = (myId: number, profile: ProfileType, setStatus: any) => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await profileAPI.updateProfile(profile)
-
     if (response.data.resultCode === 0) {
+        //@ts-ignore
         dispatch(getProfileTC(myId))
         dispatch(setUpdateAC(true))
     } else {
@@ -171,15 +182,17 @@ export const updateProfileTC = (myId: number, profile: ProfileType, setStatus: a
         dispatch(setUpdateAC(false))
     }
 }
-export const updateStatusTC = (myId: number, status: any) => async (dispatch: any) => {
+export const updateStatusTC = (myId: number, status: any) => async (dispatch: DispatchType , getState: GetStateType) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
+        //@ts-ignore
         dispatch(getStatusTC(myId))
     }
 }
-export const updateAvatarTC = (myId: number, photo: any) => async (dispatch: any) => {
+export const updateAvatarTC = (myId: number, photo: any) => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await profileAPI.updateAvatar(photo)
     if (response.data.resultCode === 0) {
+        //@ts-ignore
         dispatch(getProfileTC(myId))
     }
 }

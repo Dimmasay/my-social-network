@@ -35,7 +35,9 @@ const initialState: InitialStateType = {
 
 
 }
-const messageReducer = (state = initialState, action): InitialStateType => {
+
+type ActionsTypes = AddMessageActionType | AddDialogActionType
+const messageReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ActionType.ADD_MESSAGE:
             return {

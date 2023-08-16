@@ -10,11 +10,22 @@ import HeaderContainer from "./components/Header/HeaderContainer.tsx";
 import {connect} from "react-redux";
 import {initializedAppTC} from "./redux/appReducer.ts";
 import {useEffect} from "react";
+import {DialogType} from "./redux/messageReducer";
+import {ProfileType} from "./redux/profileReducer";
+import {AppStateType} from "./redux/redux";
+
+type MapStateType = {
+    initialized: boolean
+}
+type MapDispatchType = {
+    initializedAppTC: ()=>void
+}
+type OwnType = {}
+
+type AppPropsType = MapStateType & MapDispatchType & OwnType
 
 
-
-
-const App = (props) => {
+const App = (props: AppPropsType) => {
 
        useEffect(() => {
         props.initializedAppTC()
@@ -44,9 +55,11 @@ const App = (props) => {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         initialized: state.app.initialized
     }
 }
-export default connect(mapStateToProps, {initializedAppTC})(App);
+type ConnectType = MapStateType & MapDispatchType & OwnType & AppStateType
+
+export default connect<ConnectType>(mapStateToProps, {initializedAppTC})(App);

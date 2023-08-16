@@ -1,6 +1,8 @@
 //Action Type
 
-import {authAPI} from "../api/api";
+import {authAPI, LoginMeType} from "../api/api.ts";
+import {Dispatch} from "react";
+import {AppStateType} from "./redux";
 
 const TO_IDENTIFY = '.authReducer/TO_IDENTIFY'
 const SET_LOGOUT = '.authReducer/SET_LOGOUT'
@@ -18,7 +20,9 @@ const initialState: InitialStateType = {
     login: null,
     email: null
 }
-const authReducer = (state = initialState, action: any): InitialStateType => {
+
+type ActionsTypes = ToIdentifyActionType | LogOutActionType
+const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case TO_IDENTIFY:
             return {
@@ -55,14 +59,17 @@ export const toIdentifyAC = ({id, login, email }: { id: number, login: string, e
     email
 })
 
-type LogOutActionType = {
+export type LogOutActionType = {
     type: typeof SET_LOGOUT
 }
 export const logOutAC = (): LogOutActionType => ({type: SET_LOGOUT})
 
+//@ts-ignore
+type DispatchType = Dispatch<ActionsTypes | toIdentifyTC>
+type GetStateType = ()=>AppStateType
 
 //Thunk Creators
-export const toIdentifyTC = () => async (dispatch: any) => {
+export const toIdentifyTC = () => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await authAPI.getAuth()
     try {
         response.data.resultCode === 0 && dispatch(toIdentifyAC(response.data.data))
@@ -72,7 +79,7 @@ export const toIdentifyTC = () => async (dispatch: any) => {
 
 
 }
-export const logInTC = (userData) => async (dispatch: any) => {
+export const logInTC = (userData: LoginMeType) => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await authAPI.logIn(userData)
     try {
         response.data.resultCode === 0 && dispatch(toIdentifyTC())
@@ -81,7 +88,7 @@ export const logInTC = (userData) => async (dispatch: any) => {
         alert(e)
     }
 }
-export const logOutTC = () => async (dispatch: any) => {
+export const logOutTC = () => async (dispatch: DispatchType, getState: GetStateType) => {
     let response = await authAPI.logOut()
     if (response.data.resultCode === 0) {
         dispatch(logOutAC())

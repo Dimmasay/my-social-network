@@ -1,5 +1,7 @@
 //Action Type
 import {toIdentifyTC} from "./authReducer.ts";
+import {Dispatch} from "react";
+import {AppStateType} from "./redux";
 
 const INITIALIZATION_IS_SUCCESS = '/appReducer/INITIALIZATION_IS_SUCCESS'
 
@@ -11,7 +13,10 @@ let initialState: InitialStateType = {
     initialized: false,
 }
 
-let appReducer = (state = initialState, action: any): InitialStateType => {
+
+type ActionsTypes = InitializationSuccessActionType
+
+let appReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case INITIALIZATION_IS_SUCCESS: {
             return {
@@ -31,9 +36,10 @@ type InitializationSuccessActionType = {
 }
 export const initializationSuccessAC = (): InitializationSuccessActionType => ({type: INITIALIZATION_IS_SUCCESS})
 
-
+type DispatchType = Dispatch<ActionsTypes | toIdentifyTC>
+type GetStateType = () => AppStateType
 //Thunk Create
-export const initializedAppTC = () => async (dispatch: any) => {
+export const initializedAppTC = () => async (dispatch: DispatchType, getState: GetStateType) => {
     await dispatch(toIdentifyTC())
     dispatch(initializationSuccessAC())
 }
