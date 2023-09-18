@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/my-social-network/static/css/main.4735657a.css",
-    "main.js": "/my-social-network/static/js/main.f30a4133.js",
+    "main.css": "/my-social-network/static/css/main.fdac2a4b.css",
+    "main.js": "/my-social-network/static/js/main.73c3bb8c.js",
     "static/js/787.28cb0dcd.chunk.js": "/my-social-network/static/js/787.28cb0dcd.chunk.js",
-    "static/media/nature.jpg": "/my-social-network/static/media/nature.e619be6bc934f376de88.jpg",
+    "static/media/nature.jpg": "/my-social-network/static/media/nature.520c5929a374f0673117.jpg",
     "static/media/Gilroy-Regular.woff": "/my-social-network/static/media/Gilroy-Regular.3376a71974e29b36736f.woff",
     "static/media/Gilroy-Medium.woff": "/my-social-network/static/media/Gilroy-Medium.6f5b7ad9ce4d3d69eb1b.woff",
     "static/media/Gilroy-Semibold.woff": "/my-social-network/static/media/Gilroy-Semibold.04a60ee2f9e3305a5b52.woff",
@@ -26,15 +26,15 @@
     "static/media/messages-svgrepo-com.svg": "/my-social-network/static/media/messages-svgrepo-com.cdc28e5a81d13d96bb6d.svg",
     "index.html": "/my-social-network/index.html",
     "static/media/edit-svgrepo-com.svg": "/my-social-network/static/media/edit-svgrepo-com.11158d889bb7afc33e88.svg",
-    "static/media/camera-add-photo-svgrepo-com.svg": "/my-social-network/static/media/camera-add-photo-svgrepo-com.e6b25abab68e9154a9c448c89ac1dd1b.svg",
+    "static/media/camera-add-photo-svgrepo-com.svg": "/my-social-network/static/media/camera-add-photo-svgrepo-com.e6b25abab68e9154a9c4.svg",
     "static/media/send-2-svgrepo-com.svg": "/my-social-network/static/media/send-2-svgrepo-com.ab3c94e5c2545bf3a58f.svg",
     "static/media/message-square-lines-svgrepo-com.svg": "/my-social-network/static/media/message-square-lines-svgrepo-com.25e8f443b6c5ca29064f.svg",
-    "main.4735657a.css.map": "/my-social-network/static/css/main.4735657a.css.map",
-    "main.f30a4133.js.map": "/my-social-network/static/js/main.f30a4133.js.map",
+    "main.fdac2a4b.css.map": "/my-social-network/static/css/main.fdac2a4b.css.map",
+    "main.73c3bb8c.js.map": "/my-social-network/static/js/main.73c3bb8c.js.map",
     "787.28cb0dcd.chunk.js.map": "/my-social-network/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4735657a.css",
-    "static/js/main.f30a4133.js"
+    "static/css/main.fdac2a4b.css",
+    "static/js/main.73c3bb8c.js"
   ]
 }
