@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my-social-network/static/css/main.fdac2a4b.css",
-    "main.js": "/my-social-network/static/js/main.73c3bb8c.js",
+    "main.css": "/my-social-network/static/css/main.b3bd0a8d.css",
+    "main.js": "/my-social-network/static/js/main.67618462.js",
     "static/js/787.28cb0dcd.chunk.js": "/my-social-network/static/js/787.28cb0dcd.chunk.js",
     "static/media/nature.jpg": "/my-social-network/static/media/nature.520c5929a374f0673117.jpg",
     "static/media/Gilroy-Regular.woff": "/my-social-network/static/media/Gilroy-Regular.3376a71974e29b36736f.woff",
@@ -29,12 +29,12 @@
     "static/media/camera-add-photo-svgrepo-com.svg": "/my-social-network/static/media/camera-add-photo-svgrepo-com.e6b25abab68e9154a9c4.svg",
     "static/media/send-2-svgrepo-com.svg": "/my-social-network/static/media/send-2-svgrepo-com.ab3c94e5c2545bf3a58f.svg",
     "static/media/message-square-lines-svgrepo-com.svg": "/my-social-network/static/media/message-square-lines-svgrepo-com.25e8f443b6c5ca29064f.svg",
-    "main.fdac2a4b.css.map": "/my-social-network/static/css/main.fdac2a4b.css.map",
-    "main.73c3bb8c.js.map": "/my-social-network/static/js/main.73c3bb8c.js.map",
+    "main.b3bd0a8d.css.map": "/my-social-network/static/css/main.b3bd0a8d.css.map",
+    "main.67618462.js.map": "/my-social-network/static/js/main.67618462.js.map",
     "787.28cb0dcd.chunk.js.map": "/my-social-network/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdac2a4b.css",
-    "static/js/main.73c3bb8c.js"
+    "static/css/main.b3bd0a8d.css",
+    "static/js/main.67618462.js"
   ]
 }
